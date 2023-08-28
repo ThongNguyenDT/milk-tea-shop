@@ -15,7 +15,7 @@ public class HomeController {
     @RequestMapping("/view-items")
     public ModelAndView viewBooks(ModelAndView model) {
 
-        model.setViewName("view-items");
+        model.setViewName("home");
         model.addObject("items", itemService.getAll());
         return model;
     }
