@@ -3,3 +3,23 @@ spring:
     view:
       suffix: .jsp
       prefix: /WEB-INF/view/
+  #      prefix: /WEB-INF/view/, /templates/
+
+  datasource:
+    url: jdbc:mysql://localhost:3333/hypernate
+    username: user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+  main:
+    web-application-type: servlet
+
