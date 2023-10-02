@@ -1,0 +1,29 @@
+/* font link */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+
+body{
+    background-color: #eceae3 !important;
+}
+ 
+header{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.nav-item{
+    margin-right: 60px;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.nav-link{
+    color: #999999 !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 15px 0px;
+    text-transform: uppercase;
+    transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
