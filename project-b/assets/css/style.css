@@ -1,16 +1,122 @@
 /* font link */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
 
-body{
+body {
     background-color: #eceae3 !important;
 }
- 
- header{
-    background-color: rgba(0, 0, 0, 0.4);
+
+.body-wrap {
+    background-image: url(/assets/image/background/bg_01.png);
+    z-index: 1;
+    min-height: 100vh;
+    background-size: cover;
+    background-color: #eceae3;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+
+.background>img{
+    width: 881px;
+    height: 1321px;
+}
+
+.logo_text {
+    font-size: 25px;
+    font-family: 'Festive', cursive;
+    line-height: 161%;
+    letter-spacing: 10px;
+    background: -webkit-radial-gradient(#00FB46,#DE768F, #F1E85E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.leaf_image {
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    position: fixed;
+    width: 1023px;
+}
+
+.leaf_image>img{
+    width: 1023px;
+    opacity: 0.06;
+}
+
+ul {
+    list-style: none;
+}
+
+.icon_btn {
+    border: none;
+    background-color: transparent;
+    margin-right: 10px;
+}
+
+.icon_btn>small {
+    top: -7px;
+    right: -10px;
+    height: 22px;
+    color: #ffffff;
+    min-width: 22px;
+    font-size: 12px;
+    line-height: 22px;
+    text-align: center;
+    position: absolute;
+    border-radius: 45px;
+    background-color: #c7a17a;
+}
+
+.cart_btn {
+    position: relative;
+}
+
+header {
+    /* background-color: rgba(0, 0, 0, 0.4); */
 }
 
 .dropdown:hover>.dropdown-menu {
     display: block;
 }
 
+.nav-item {
+    padding-left: 25px;
+}
+
+.nav-link {
+    padding: 0px;
+    display: block;
+    color: #999999;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ul_li_right {
+    margin-bottom: 0;
+}
+
+.navbar-nav>li:hover>a,
+.navbar-nav>li.active>a,
+.icon:hover {
+    color: #d4af89;
+}
+
+@media only screen and (min-width: 993px) {
+    .navbar-brand {
+        text-align: left;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .navbar-brand {
+        text-align: center;
+
+    }
+
+
+}
