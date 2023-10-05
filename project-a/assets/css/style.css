@@ -7,14 +7,12 @@
 body {
     background-color: #eceae3 !important;
     height: 1000px;
-    overflow: hidden;
 }
 
 .body-wrap {
     position: relative;
     background-image: url(/assets/image/background/bg_01.png);
     z-index: 1;
-    height: 100%;
     overflow: hidden;
     background-size: cover;
     background-color: #eceae3;
@@ -111,7 +109,7 @@ ul {
 
 /* main body style */
 .content {
-    height: 905px;
+    height: 950px;
     align-items: center;
 }
 
