@@ -1,27 +1,38 @@
 /* font link */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:ital,wght@0,400;1,100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Rochester&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Rochester&family=Rouge+Script&display=swap');
 
 body {
     background-color: #eceae3 !important;
+    height: 1000px;
+    overflow: hidden;
 }
 
 .body-wrap {
+    position: relative;
     background-image: url(/assets/image/background/bg_01.png);
     z-index: 1;
-    min-height: 100vh;
+    height: 100%;
+    overflow: hidden;
     background-size: cover;
     background-color: #eceae3;
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center center;
 
 }
 
-.background>img{
-    width: 881px;
-    height: 1321px;
+
+
+/* header style */
+header{
+    position: relative;
+    z-index: 100;
+}
+.navbar-brand {
+    position: relative;
+    left: -50px;
 }
 
 .logo_text {
@@ -29,21 +40,9 @@ body {
     font-family: 'Festive', cursive;
     line-height: 161%;
     letter-spacing: 10px;
-    background: -webkit-radial-gradient(#00FB46,#DE768F, #F1E85E);
+    background: -webkit-radial-gradient(#00FB46, #DE768F, #F1E85E);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-.leaf_image {
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    position: fixed;
-    width: 1023px;
-}
-
-.leaf_image>img{
-    width: 1023px;
-    opacity: 0.06;
 }
 
 ul {
@@ -74,8 +73,8 @@ ul {
     position: relative;
 }
 
-header {
-    /* background-color: rgba(0, 0, 0, 0.4); */
+.dark_background {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .dropdown:hover>.dropdown-menu {
@@ -83,7 +82,7 @@ header {
 }
 
 .nav-item {
-    padding-left: 25px;
+    padding-right: 25px;
 }
 
 .nav-link {
@@ -106,17 +105,90 @@ header {
     color: #d4af89;
 }
 
+
+
+
+
+/* main body style */
+.content {
+    height: 905px;
+    align-items: center;
+}
+
+.tea_img {
+    opacity: 0.04;
+    position: absolute;
+}
+
+.left_content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+
+.textbox{
+    position: relative;
+}
+
+.textbox>p {
+    max-width: 458px;
+    text-align: justify;
+    font-family: 'Roboto', sans-serif;
+}
+
+.textbox>h1 {
+    color: #FBB040;
+    text-align: center;
+    font-family: Rochester;
+    font-size: 38px;
+    font-weight: 400;
+    letter-spacing: 7.6px;
+    text-transform: capitalize;
+}
+
+.textbox>h2 {
+    color: #000;
+    font-family: Rouge Script;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 10.56px;
+}
+
+.shop_btn {
+    position: absolute;
+    bottom: -60px;
+    left: -12px;
+}
+
+.right_content>img {
+    max-width: 90%;
+    border-radius: 52px;
+}
+
+
+
+
 @media only screen and (min-width: 993px) {
     .navbar-brand {
         text-align: left;
     }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1000px) {
+
     .navbar-brand {
         text-align: center;
-
     }
 
-
+    .content {
+        position: relative;
+        z-index: 1;
+    }
+    .textbox>h1 {
+        font-size: 28px;
+    }
 }
+
