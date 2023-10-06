@@ -1,8 +1,6 @@
 /* font link */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:ital,wght@0,400;1,100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Festive&family=Rochester&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Festive&family=Rochester&family=Rouge+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=PT+Sans&family=Raleway:ital,wght@0,100;1,900&family=Roboto:wght@100;400&family=Rochester&family=Rouge+Script&display=swap');
+
 
 body {
     background-color: #eceae3 !important;
@@ -12,8 +10,7 @@ body {
 .body-wrap {
     position: relative;
     background-image: url(/assets/image/background/bg_01.png);
-    z-index: 1;
-    overflow: hidden;
+    overflow-x: hidden;
     background-size: cover;
     background-color: #eceae3;
     background-repeat: no-repeat;
@@ -24,10 +21,11 @@ body {
 
 
 /* header style */
-header{
+header {
     position: relative;
     z-index: 100;
 }
+
 .navbar-brand {
     position: relative;
     left: -50px;
@@ -127,7 +125,7 @@ ul {
     height: 500px;
 }
 
-.textbox{
+.textbox {
     position: relative;
 }
 
@@ -166,7 +164,44 @@ ul {
     border-radius: 52px;
 }
 
+.section_2 {
+    position: relative;
+}
 
+.slider{
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-image: url("/assets/image/landing-page/3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+}
+
+.text b,
+strong {
+    font-style: italic;
+    font-weight: 700;
+}
+
+.text h1 {
+    color: #fffcfc;
+    font-family: raleway, Sans-serif;
+    font-size: 56px;
+    font-weight: 100;
+    line-height: 1.1em;
+}
+
+.section_2 h2 {
+    margin-top: 40px;
+    color: #fffcfc;
+    text-align: justify;
+    font-family: pt sans, Sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7em
+}
 
 
 @media only screen and (min-width: 993px) {
@@ -185,8 +220,8 @@ ul {
         position: relative;
         z-index: 1;
     }
+
     .textbox>h1 {
         font-size: 28px;
     }
 }
-
