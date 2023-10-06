@@ -108,8 +108,8 @@ ul {
 
 
 /* main body style */
-.content {
-    height: 950px;
+.section_1 {
+    height: 100vh;
     align-items: center;
 }
 
