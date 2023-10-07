@@ -138,7 +138,7 @@
 
     <div class="section_1 container d-flex">
       <div class="row d-flex align-items-center ">
-        <div class="col col-sm-12  col-md-8 col-xxl-6 left_content">
+        <div class="col col-sm-12 col-md-8 col-xxl-6 left_content">
           <img class="img-fluid tea_img" src="/assets/image/landing-page/tea.png" alt="">
           <div class="textbox">
             <h2>Indulge in the</h2>
@@ -183,6 +183,14 @@
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/ac291e7c29.js" crossorigin="anonymous"></script>
+  <script>
+    const shopbtn = document.querySelector('.shop_btn>button');
+    function callback(){shopbtn.classList.add('Btn_hover--active'); 
+    console.log('run')
+  }
+    setTimeout(callback,2000)
+    
+  </script>
 </body>
 
 </html>
