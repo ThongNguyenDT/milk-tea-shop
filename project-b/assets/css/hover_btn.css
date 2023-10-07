@@ -13,7 +13,8 @@
     overflow: hidden;
 }
 
-.Btn_hover::before {
+.Btn_hover::before,
+.Btn_hover--active::before{
     content: '';
     position: absolute;
     inset: 0;
@@ -27,16 +28,19 @@
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.Btn_hover:hover::before {
+.Btn_hover:hover::before,
+.Btn_hover--active::before{
     scale: 3;
 }
 
-.Btn_hover:hover {
+.Btn_hover:hover,
+.Btn_hover--active{
     color: #212121;
     scale: 1.1;
     box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
 }
 
-.Btn_hover:active {
+.Btn_hover:active
+ {
     scale: 1;
 }
