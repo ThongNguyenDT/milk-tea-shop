@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Festive&family=PT+Sans&family=Raleway:ital,wght@0,100;1,900&family=Roboto:wght@100;400&family=Rochester&family=Rouge+Script&display=swap');
 
 
-body {
+ body {
     background-color: #eceae3 !important;
     height: 1000px;
 }
@@ -15,7 +15,6 @@ body {
     background-color: #eceae3;
     background-repeat: no-repeat;
     background-position: center center;
-    perspective: 15px;
 
 }
 
@@ -256,7 +255,7 @@ strong {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.7em
-}
+} 
 
 .sec_3{
     position: relative;
