@@ -1,31 +1,8 @@
-// const { innerHeight } = window;
+const pageHeight = 1036;
+const pages = document.querySelectorAll('.sec_3 .row');
+document.querySelector('.cus-fullpage').style.height = `${pageHeight * pages.length}px`;
 
-// // gsap.to(".shop_btn",{ duration: 2}) 
-
-// const tl = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: ".shop_btn",
-//     markers: true,
-//     start: "-100px 50%",
-//     end: "bottom 50%",
-//     scrub:1
-//   }
-// });
-
-// tl.to(".shop_btn", {scale:1200, x:-1855, duration:3})
-
-// const tl1 = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: ".shop_btn",
-//     markers: true,
-//     start: "-100px 50%",
-//     end: "bottom 50%",
-//     scrub:1
-//   }
-// });
-
-// tl1.to(".section_1 .row{", {top:1028})
-
+const stylePage = `background-image: url(https://www.koithe.com/uploads/tab-contents/59e5ac7097ee9.jpg); height: ${pageHeight}; position:fixed width: 100%; top: 0px;left: 0px; z-index: 5;`
 
 let sections = document.querySelectorAll('section');
 const container = document.querySelector('.sec_1 .container');
@@ -38,12 +15,12 @@ window.onscroll = () => {
     let offset = sec.offsetTop - 1000;
     let height = sec.offsetHeight;
 
-    if (top >= offset && top < offset + height){
-      let scrollper = top/9479;
-      console.log(scrollper);
-      if (scrollper <=1){
-        container.style.transform = `translateY(${top+offset+950}px)`;
-        if (scrollper > 0.01){
+    if (top >= offset && top < offset + height) {
+      let scrollper = top / 9479;
+      // console.log(scrollper);
+      if (scrollper <= 1) {
+        container.style.transform = `translateY(${top + offset + 950}px)`;
+        if (scrollper > 0.01) {
           btn_animate.classList.add('Btn_hover--active')
           let scale = 1200 * scrollper - (1200 * 0.01);
           let movX = -5250 * scrollper;
@@ -61,10 +38,30 @@ window.onscroll = () => {
 
         }
       }
-        
+
       sec.classList.add('show-animate');
     }
     else
       sec.classList.remove('show-animate');
   })
+
+  let index = 0;
+  pages.forEach(page => {
+    let top = window.scrollY
+    let offset = 11494 + pageHeight * index;
+    index++;
+    console.log({
+      index: `${index}`,
+      page: `${page}`,
+      top: `${top}`,
+      offset: `${offset}`
+    })
+    if (index > pages.length) index = 0;
+    if (top >= offset && top < offset + pageHeight) {
+      console.log(index)
+      page.style.cssText = stylePage;
+    }
+
+  })
+
 }
