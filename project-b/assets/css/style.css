@@ -126,8 +126,6 @@ ul {
     
 }
 
-
-
 .tea_img {
     opacity: 0.04;
     position: absolute;
@@ -184,8 +182,29 @@ ul {
 .sec_2 {
     position: relative;
     background-color: #212121;
-    
 }
+
+.sec_2 h1,
+.sec_2 h2{
+    transition: 1s;
+}
+
+.sec_2 h1
+{
+    transform: translateX(150%);
+}
+
+.sec_2 h2:nth-child(odd){
+    transform: translateX(-50%);
+}
+
+.sec_2 h2:nth-child(even){
+    transform: translateX(50%);
+}
+.sec_2.show-animate h1,
+.sec_2.show-animate h2{
+    transform: translateX(0%);
+} 
 
 .sec_2 .slider{
     opacity: 0;
@@ -199,7 +218,9 @@ ul {
     opacity: 1;
 }
 
-
+.sec_2 h2 + h2 {
+    margin-top: 0px;
+}
 
 .slider{
     position: relative;
@@ -235,6 +256,23 @@ strong {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.7em
+}
+
+.sec_3{
+    position: relative;
+    width: 100%;
+}
+
+.sec_3 .row{
+    background-position: 100% 0;
+    min-height: 1036px;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: table;
+    height: 100%;
+    position: relative;
+    margin: 0;
 }
 
 
