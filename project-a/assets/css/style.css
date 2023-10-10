@@ -119,10 +119,17 @@ ul {
 /* main body style */
 .sec_1 {
     position: relative;
-    height: 1000vh;
-    align-items: center;
+    height: 500vh;
+    display: flex;
+    justify-content: center;
     overflow: hidden;
     
+}
+
+.sec_1.show-animate .row{
+    position: fixed;
+    width: 1320px;
+    top: 100px;
 }
 
 .tea_img {
@@ -208,7 +215,6 @@ ul {
 .sec_2 .slider{
     opacity: 0;
     transition: 1s ease-out; 
-    transition-delay: .5s;
     background-color: #212121;
 }
 
@@ -262,15 +268,15 @@ strong {
     width: 100%;
 }
 
-.sec_3 .row{
+.sec_3.show-animate .row{
+    width: 100%;
+    height: 1036px;
     background-position: 100% 0;
-    min-height: 1036px;
-    background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
     display: table;
-    height: 100%;
-    position: relative;
+    position: fixed;
+    top: 0;
     margin: 0;
 }
 
