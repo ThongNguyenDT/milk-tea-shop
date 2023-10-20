@@ -46,8 +46,6 @@ a {
     text-decoration: none;
 }
 
-
-
 .icon_btn {
     border: none;
     background-color: transparent;
@@ -118,9 +116,6 @@ a {
     background-color: rgba(0, 0, 0, 0.4);
     border: none;
 }
-
-
-
 
 /* main body style */
 .sec_1 {
@@ -502,27 +497,5 @@ footer a:hover {
     }
 } 
 
-/* @media  (min-width: 1200px){
-    .sec_1.show-animate .row{
-        width: 1140px;
-    }
-}
 
-@media (min-width: 992px){
-    .sec_1.show-animate .row{
-        width: 960px;
-    }
-}
-
-@media (min-width: 768px){
-    .sec_1.show-animate .row{
-        width: 720px;
-    }
-}
-
-@media (min-width: 576px){
-    .sec_1.show-animate .row{
-        width: 540px;
-    }
-} */
 
