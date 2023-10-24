@@ -1,5 +1,19 @@
-const header = document.querySelector('header');
-header.className = 'header-section'
+let head = document.getElementsByTagName("HEAD")[0];
+let link = document.createElement("link");
+link.rel = "stylesheet";
+link.href = "assets/js/components/header/header.css";
+head.appendChild(link);
+link = document.createElement("link");
+link.rel = "stylesheet";
+link.href = "assets/js/components/header/button.css";
+head.appendChild(link);
+link = document.createElement("link");
+link.rel = "stylesheet";
+link.href = "assets/js/components/header/hover_btn.css";
+head.appendChild(link);
+
+const header = document.querySelector("header");
+header.className = "header-section";
 header.innerHTML = `
 <nav class="navbar navbar-expand-xl bd-navbar">
     <div class="container-md">
@@ -90,6 +104,4 @@ header.innerHTML = `
             </ul>
         </div>
     </div>
-</nav>`
-
-
+</nav>`;
