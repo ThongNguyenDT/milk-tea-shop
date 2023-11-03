@@ -1,3 +1,5 @@
 reactjs
 node-modules
-/.idea
+.idea
+*.code-workspace
+
