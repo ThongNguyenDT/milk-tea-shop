@@ -1,9 +1,9 @@
 package com.example.web_project.auth;
 
-import com.example.web_project.Repository.AccountRepository;
-import com.example.web_project.entities.enums.Role;
+import com.example.web_project.repository.AccountRepository;
 import com.example.web_project.entities.Account;
-import com.example.web_project.services.jwt.JwtService;
+import com.example.web_project.services.AccountService;
+import com.example.web_project.services.securityService.JwtService;
 import com.example.web_project.token.Token;
 import com.example.web_project.token.TokenRepository;
 import com.example.web_project.token.TokenType;
@@ -11,10 +11,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -24,19 +24,12 @@ import java.io.IOException;
 public class AuthenticationService {
     private final AccountRepository repository;
     private final TokenRepository tokenRepository;
-    private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    @Autowired
+    private final AccountService accountService;
     public AuthenticationResponse register(RegisterRequest request) {
-        var user = Account.builder()
-                .name(request.getName())
-                .username(request.getUsername())
-                .email(request.getEmail())
-                .phoneNumber(request.getPhoneNumber())
-                .address(request.getAddress())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .type(Role.USER)
-                .build();
+        var user =  accountService.makeAccount(request);
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
