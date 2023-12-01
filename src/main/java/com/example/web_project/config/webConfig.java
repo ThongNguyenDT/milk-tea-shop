@@ -19,6 +19,13 @@ public class webConfig implements WebMvcConfigurer {
         resolver.setSuffix(".jsp");
         return resolver;
     }
+    @Bean
+    public FilterRegistrationBean siteMeshFilter() {
+        FilterRegistrationBean filter = new FilterRegistrationBean();
+        MySiteMeshFilter siteMeshFilter = new MySiteMeshFilter();
+        filter.setFilter(siteMeshFilter);
+        return filter;
+    }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**")
