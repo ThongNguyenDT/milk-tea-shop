@@ -1,15 +1,15 @@
 let head = document.getElementsByTagName("HEAD")[0];
 let link = document.createElement("link");
 link.rel = "stylesheet";
-link.href = "assets/js/components/header/header.css";
+link.href = "/resources/static/js/components/header/header.css";
 head.appendChild(link);
 link = document.createElement("link");
 link.rel = "stylesheet";
-link.href = "assets/js/components/header/button.css";
+link.href = "/resources/static/js/components/header/button.css";
 head.appendChild(link);
 link = document.createElement("link");
 link.rel = "stylesheet";
-link.href = "assets/js/components/header/hover_btn.css";
+link.href = "/resources/static/js/components/header/hover_btn.css";
 head.appendChild(link);
 
 const header = document.querySelector("header");
@@ -97,7 +97,7 @@ header.innerHTML = `
                     </button>
                 </li>
                 <li>
-                    <button class="Btn_hover ms-lg-2 ms-xl-3" onclick="window.location.href='signin.html';">
+                    <button class="Btn_hover ms-lg-2 ms-xl-3" onclick="window.location.href='login';">
                         Sign in
                     </button>
                 </li>

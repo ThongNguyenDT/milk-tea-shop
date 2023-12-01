@@ -7,7 +7,7 @@
   <title>Bootstrap demo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="/resources/static/css/style.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
       <div class="container-md">
         <div class="row d-flex align-items-center container-md">
           <div class="col col-sm-12 col-md-8 col-xxl-6 left_content">
-            <img class="img-fluid tea_img" src="/assets/image/landing-page/tea.png" alt="">
+            <img class="img-fluid tea_img" src="/resources/static/assets/image/landing-page/tea.png" alt="">
             <div class="textbox">
               <h2>Indulge in the</h2>
               <h1>Creamy Bliss of Milk Tea</h1>
@@ -37,7 +37,7 @@
           </div>
 
           <div class="col-md-4 col-xxl-6 right_content d-flex justify-content-center">
-            <img class="img-fluid" src="/assets/image/landing-page/img_02.jpeg" alt="">
+            <img class="img-fluid" src="/resources/static/assets/image/landing-page/img_02.jpeg" alt="">
           </div>
         </div>
       </div>
@@ -393,8 +393,8 @@
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/ac291e7c29.js" crossorigin="anonymous"></script>
-  <script src="assets/js/scroll.js"></script>
-  <script src="assets/js/components/header/header.js"></script>
+  <script src="/resources/static/js/scroll.js"></script>
+  <script src="/resources/static/js/components/header/header.js"></script>
 
 </body>
 
