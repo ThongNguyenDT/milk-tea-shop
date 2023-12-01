@@ -33,12 +33,26 @@ public class webConfig implements WebMvcConfigurer {
                 .addResourceLocations("/resources/")
                 .addResourceLocations("/resources/static/")
                 .addResourceLocations("/resources/static/assets/")
+                .addResourceLocations("/resources/static/assets/image/")
                 .addResourceLocations("/resources/static/css/")
                 .addResourceLocations("/resources/static/js/")
                 .addResourceLocations("/resources/static/media/")
-                .addResourceLocations("/resources/template");
+                .addResourceLocations("/resources/templates/");
         registry.addResourceHandler("/static/**")
-                .addResourceLocations("/resources/static/");
+                .addResourceLocations("/resources/static/")
+                .addResourceLocations("/resources/static/assets/")
+                .addResourceLocations("/resources/static/css/")
+                .addResourceLocations("/resources/static/js/")
+                .addResourceLocations("/resources/static/media/");
+        registry.addResourceHandler("favicon.ico")
+                .addResourceLocations("/resources/favicon.ico");
+        registry.addResourceHandler("WEB_INF/**")
+                .addResourceLocations("WEB_INF/**")
+                .addResourceLocations("WEB_INF/decorators/")
+                .addResourceLocations("WEB_INF/common/");
+        registry.addResourceHandler("auth/**")
+                .addResourceLocations("WEB_INF/views/auth/");
+
 //        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
 //        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
     }
