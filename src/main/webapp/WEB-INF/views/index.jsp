@@ -394,6 +394,9 @@
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/ac291e7c29.js" crossorigin="anonymous"></script>
   <script src="/resources/static/js/scroll.js"></script>
+  <script>
+    const jsonUser = [${jsonUser}];
+  </script>
   <script src="/resources/static/js/components/header/header.js"></script>
 
 </body>

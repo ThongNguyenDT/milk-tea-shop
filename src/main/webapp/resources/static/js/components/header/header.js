@@ -12,6 +12,33 @@ link.rel = "stylesheet";
 link.href = "/resources/static/js/components/header/hover_btn.css";
 head.appendChild(link);
 
+
+const auth = (user) => {
+    console.log(user)
+    const name = user[0].username
+    console.log(name)
+    if (user == null || user == []) {
+        return `<li>
+                <button class="Btn_hover ms-lg-2 ms-xl-3" onclick="window.location.href='login';">
+                    Sign in
+                </button>
+            </li>`
+    }
+    else {
+        return `<li>
+                    <span class="Button-content" style="margin-left: 20px">
+                        <span class="Button-label">
+                            <img src="https://avatars.githubusercontent.com/u/68158536?v=4" alt="" size="32"
+                                 height="32" width="32" data-view-component="true" class="avatar circle">
+                        </span>
+                    </span>
+                </li>
+                <li style="margin-left: 2px"> ${name} </li>`
+
+    }
+}
+
+
 const header = document.querySelector("header");
 header.className = "header-section";
 header.innerHTML = `
@@ -96,11 +123,7 @@ header.innerHTML = `
                         <small class=" cart_counter">2</small>
                     </button>
                 </li>
-                <li>
-                    <button class="Btn_hover ms-lg-2 ms-xl-3" onclick="window.location.href='login';">
-                        Sign in
-                    </button>
-                </li>
+                ${auth(jsonUser)}
             </ul>
         </div>
     </div>
