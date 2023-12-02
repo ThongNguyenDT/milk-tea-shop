@@ -52,6 +52,8 @@ public class webConfig implements WebMvcConfigurer {
                 .addResourceLocations("WEB_INF/common/");
         registry.addResourceHandler("auth/**")
                 .addResourceLocations("WEB_INF/views/auth/");
+        registry.addResourceHandler("error/**")
+                .addResourceLocations("WEB_INF/views/error/");
 
 //        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
 //        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
