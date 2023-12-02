@@ -1,6 +1,7 @@
 package com.example.web_project.controller;
 
 import com.example.web_project.repository.AccountRepository;
+import com.example.web_project.services.securityService.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,10 +17,12 @@ import java.util.Map;
 public class HomeController {
 
     private final AccountRepository repository;
+    private final AuthService authService;
+
 
     @RequestMapping({"/", "/home"})
     public String welcome(Model model) {
-        model.addAttribute("hello", "hello");
+        model = authService.common(model);
         return "index";
     }
 
