@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/resources/static/css/menu/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Moon Dance">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rye">
@@ -49,7 +49,7 @@
                                             <button id="closeGolden" class="close-button">Close</button>
 
                                         </div>
-                                        <button id="buybutton " style="background-color: rgb(248, 225, 175);"
+                                        <button id="buybutton" style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy</button>
 
                                     </div>
@@ -72,7 +72,7 @@
                                             mouth.</p>
                                             <button id="closeBlack" class="close-button">Close</button>
 
-                                        </div> <button id="buybutton " style="background-color: rgb(248, 225, 175);"
+                                        </div> <button id="buybutton" style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy</button>
 
                                     </div>
@@ -91,7 +91,7 @@
                                             texture and flavor.</p>
                                             <button id="closeMatcha" class="close-button">Close</button>
 
-                                        </div> <button id="buybutton " style="background-color: rgb(248, 225, 175);"
+                                        </div> <button id="buybutton" style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy</button>
 
                                     </div>
@@ -109,7 +109,7 @@
                                             complements our milk tea perfectly, and they’re fun to chew at too!</p>
                                             <button id="closeMilk" class="close-button">Close</button>
 
-                                        </div> <button id="buybutton " style="background-color: rgb(248, 225, 175);"
+                                        </div> <button id="buybutton" style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy</button>
 
                                     </div>
