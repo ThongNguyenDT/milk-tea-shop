@@ -11,6 +11,11 @@ link = document.createElement("link");
 link.rel = "stylesheet";
 link.href = "/resources/static/js/components/header/hover_btn.css";
 head.appendChild(link);
+link = document.createElement("script");
+link.defer = "defer";
+link.src = "https://kit.fontawesome.com/ac291e7c29.js";
+link.rel = "anonymous";
+head.appendChild(link);
 
 
 const auth = (user) => {
