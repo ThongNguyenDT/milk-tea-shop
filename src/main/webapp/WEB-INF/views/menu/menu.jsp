@@ -15,8 +15,8 @@
 </head>
 
 <body>
-<header></header>
 <div class="bodywrap">
+    <header></header>
     <div class="background">
         <div class="container">
             <div class="row1">
@@ -49,7 +49,7 @@
                                         <button id="closeGolden" class="close-button">Close</button>
 
                                     </div>
-                                    <button id="buybutton0" style="background-color: rgb(248, 225, 175);"
+                                    <button id="buybutton " style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy
                                     </button>
 
@@ -73,7 +73,7 @@
                                         <button id="closeBlack" class="close-button">Close</button>
 
                                     </div>
-                                    <button id="buybutton1" style="background-color: rgb(248, 225, 175);"
+                                    <button id="buybutton " style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy
                                     </button>
 
@@ -94,7 +94,7 @@
                                         <button id="closeMatcha" class="close-button">Close</button>
 
                                     </div>
-                                    <button id="buybutton2" style="background-color: rgb(248, 225, 175);"
+                                    <button id="buybutton " style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy
                                     </button>
 
@@ -114,7 +114,7 @@
                                         <button id="closeMilk" class="close-button">Close</button>
 
                                     </div>
-                                    <button id="buybutton3" style="background-color: rgb(248, 225, 175);"
+                                    <button id="buybutton " style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy
                                     </button>
 
@@ -174,19 +174,19 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <li class="drink_list">Black Tea Macchiato</li>
+                        <li class="drink">Black Tea Macchiato</li>
                         <li class="cost">20$</li>
 
-                        <li class="drink_list">Matcha Tea</li>
+                        <li class="drink">Matcha Tea</li>
                         <li class="cost">20$</li>
 
-                        <li class="drink_list">Jasmin Tea</li>
+                        <li class="drink">Jasmin Tea</li>
                         <li class="cost">30$</li>
 
-                        <li class="drink_list">Yakult Green Tea</li>
+                        <li class="drink">Yakult Green Tea</li>
                         <li class="cost">10$</li>
 
-                        <li class="drink_list">Rose Tea</li>
+                        <li class="drink">Rose Tea</li>
                         <li class="cost">25$</li>
 
 
@@ -208,20 +208,20 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <li class="drink_list">GB Milk Tea
+                        <li class="drink">GB Milk Tea
                         </li>
                         <li class="cost">10$</li>
 
-                        <li class="drink_list">Matcha Latte</li>
+                        <li class="drink">Matcha Latte</li>
                         <li class="cost">15$</li>
 
-                        <li class="drink_list">Taro Q Tea</li>
+                        <li class="drink">Taro Q Tea</li>
                         <li class="cost">24$</li>
 
-                        <li class="drink_list">Normal Milk Tea</li>
+                        <li class="drink">Normal Milk Tea</li>
                         <li class="cost">32$</li>
 
-                        <li class="drink_list">Yogur Milk Tea</li>
+                        <li class="drink">Yogur Milk Tea</li>
                         <li class="cost">25$</li>
 
 
@@ -240,19 +240,19 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <li class="drink_list">Cappuchino</li>
+                        <li class="drink">Cappuchino</li>
                         <li class="cost">5$</li>
 
-                        <li class="drink_list">Americano</li>
+                        <li class="drink">Americano</li>
                         <li class="cost">10$</li>
 
-                        <li class="drink_list">Cold Brew</li>
+                        <li class="drink">Cold Brew</li>
                         <li class="cost">30$</li>
 
-                        <li class="drink_list">Black coffee</li>
+                        <li class="drink">Black coffee</li>
                         <li class="cost">20$</li>
 
-                        <li class="drink_list">Milk Coffee</li>
+                        <li class="drink">Milk Coffee</li>
                         <li class="cost">25$</li>
 
 
@@ -272,19 +272,19 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <li class="drink_list">Cupcake</li>
+                        <li class="drink">Cupcake</li>
                         <li class="cost">5$</li>
 
-                        <li class="drink_list">Panna Cotta</li>
+                        <li class="drink">Panna Cotta</li>
                         <li class="cost">20$</li>
 
-                        <li class="drink_list">Flan</li>
+                        <li class="drink">Flan</li>
                         <li class="cost">4$</li>
 
-                        <li class="drink_list">Pancake</li>
+                        <li class="drink">Pancake</li>
                         <li class="cost">10$</li>
 
-                        <li class="drink_list">Birthday Cake</li>
+                        <li class="drink">Birthday Cake</li>
                         <li class="cost">25$</li>
 
 
@@ -302,19 +302,19 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <li class="drink_list">Banh Mi</li>
+                        <li class="drink">Banh Mi</li>
                         <li class="cost">20$</li>
 
-                        <li class="drink_list">Hot Dog</li>
+                        <li class="drink">Hot Dog</li>
                         <li class="cost">10$</li>
 
-                        <li class="drink_list">Mini Pizza</li>
+                        <li class="drink">Mini Pizza</li>
                         <li class="cost">30$</li>
 
-                        <li class="drink_list">Doner Kebab</li>
+                        <li class="drink">Doner Kebab</li>
                         <li class="cost">15$</li>
 
-                        <li class="drink_list">Bread with Nutella</li>
+                        <li class="drink">Bread with Nutella</li>
                         <li class="cost">0.5$</li>
 
 
@@ -332,13 +332,13 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <li class="drink_list">Tissue</li>
+                        <li class="drink">Tissue</li>
                         <li class="cost">0.2$</li>
 
-                        <li class="drink_list">Fork/Straw/Spoon</li>
+                        <li class="drink">Fork/Straw/Spoon</li>
                         <li class="cost">0.5$</li>
 
-                        <li class="drink_list">Cigarette</li>
+                        <li class="drink">Cigarette</li>
                         <li class="cost">1.5$</li>
 
                     </ul>
@@ -353,7 +353,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-
 </body>
 <script>
     var imageA = document.getElementById('golden');
