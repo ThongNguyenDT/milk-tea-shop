@@ -24,9 +24,8 @@ head.appendChild(link);
 
 const auth = (user) => {
     console.log(user)
-    const name = user[0].username
-    console.log(name)
-    if (user == null || user == []) {
+
+    if (user == null || user.length == 0) {
         return `<li>
                 <button class="Btn_hover ms-lg-2 ms-xl-3" onclick="window.location.href='login';">
                     Sign in
@@ -34,15 +33,32 @@ const auth = (user) => {
             </li>`
     }
     else {
+        const name = user[0].username
         return `<li>
-                    <span class="Button-content" style="margin-left: 20px">
-                        <span class="Button-label">
-                            <img src="https://avatars.githubusercontent.com/u/68158536?v=4" alt="" size="32"
-                                 height="32" width="32" data-view-component="true" class="avatar circle">
-                        </span>
-                    </span>
-                </li>
-                <li style="margin-left: 2px"> ${name} </li>`
+                    <div class="dropdown">
+                      <span
+                        class="Button-content"
+                        style="margin-left: 20px"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                         <img src="https://avatars.githubusercontent.com/u/68158536?v=4" alt="" size="32"
+                                         height="32" width="32" data-view-component="true" class="avatar circle">
+                      </span>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                      </ul>
+                    </div>
+                        <li class="Button-content"
+                            id="dropdownMenuButton"
+                            data-mdb-toggle="dropdown"
+                            aria-expanded="false"
+                            style="margin-left: 2px"> ${name}
+                        </li>
+               </li>
+`
 
     }
 }
