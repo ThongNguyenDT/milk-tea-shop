@@ -139,3 +139,12 @@ function myFunction(i) {
     }
 
 }
+
+function pageLoad() {
+    if (window.location.hash != '') {
+        var page = window.location.hash .replace("#","");
+        myFunction(page);
+    }
+}
+
+pageLoad();
