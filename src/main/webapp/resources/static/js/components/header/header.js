@@ -128,3 +128,14 @@ header.innerHTML = `
         </div>
     </div>
 </nav>`;
+
+function myFunction(i) {
+    if (window.location.pathname == "/") {
+        const index = [4242, 5278, 6314, 7350, 8386, 9422, 10458, 12400, 13871];
+        window.scrollTo(0, index[i]);
+    }
+    else{
+        window.location.href = "/#"+ i
+    }
+
+}
