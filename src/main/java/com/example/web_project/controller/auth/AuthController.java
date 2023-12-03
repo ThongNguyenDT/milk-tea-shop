@@ -1,4 +1,4 @@
-package com.example.web_project.controller;
+package com.example.web_project.controller.auth;
 
 import com.example.web_project.auth.AuthenticationService;
 import com.example.web_project.auth.RegisterRequest;
