@@ -93,7 +93,11 @@ a {
   color: #d4af89;
 }
 
-.dropdown-menu {
-  background-color: rgba(0, 0, 0, 0.4);
-  border: none;
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+  pointer-events: none;
+}
+
+.dropdown-item:hover{
+  background-color: rgba(0,0,0,0.2);
 }
