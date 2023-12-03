@@ -49,7 +49,7 @@
                                         <button id="closeGolden" class="close-button">Close</button>
 
                                     </div>
-                                    <button id="buybutton" style="background-color: rgb(248, 225, 175);"
+                                    <button id="buybutton0" style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy
                                     </button>
 
@@ -73,7 +73,7 @@
                                         <button id="closeBlack" class="close-button">Close</button>
 
                                     </div>
-                                    <button id="buybutton" style="background-color: rgb(248, 225, 175);"
+                                    <button id="buybutton1" style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy
                                     </button>
 
@@ -94,7 +94,7 @@
                                         <button id="closeMatcha" class="close-button">Close</button>
 
                                     </div>
-                                    <button id="buybutton" style="background-color: rgb(248, 225, 175);"
+                                    <button id="buybutton2" style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy
                                     </button>
 
@@ -114,7 +114,7 @@
                                         <button id="closeMilk" class="close-button">Close</button>
 
                                     </div>
-                                    <button id="buybutton" style="background-color: rgb(248, 225, 175);"
+                                    <button id="buybutton3" style="background-color: rgb(248, 225, 175);"
                                             class="buybutton justify-content-center align-items-center">Buy
                                     </button>
 
