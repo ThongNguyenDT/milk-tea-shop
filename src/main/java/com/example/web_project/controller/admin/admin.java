@@ -1,4 +1,4 @@
-package com.example.web_project.controller;
+package com.example.web_project.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
