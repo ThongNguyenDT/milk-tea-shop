@@ -21,13 +21,14 @@ import java.math.BigDecimal;
 @Immutable
 @Table(name = "viewmonth", schema = "WebProject")
 public class Viewmonth {
-    @Id
+
     @Column(name = "Customers", precision = 32)
     private BigDecimal customers;
 
     @Column(name = "Products", precision = 32)
     private BigDecimal products;
 
+    @Id
     @Column(name = "Earn", precision = 52)
     private BigDecimal earn;
 
