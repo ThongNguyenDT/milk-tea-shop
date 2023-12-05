@@ -13,8 +13,7 @@ public class menu {
 
     @RequestMapping({"/alotra/shop"})
     public String shop(Model model) {
-        model = authService.common(model);
-        return "menu/menu";
+        return "redirect:/shop";
     }
     @RequestMapping({"/shop"})
     public String shop1(Model model) {
