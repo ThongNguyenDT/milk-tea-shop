@@ -34,7 +34,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.ALW
 public class SecurityConfiguration {
 
     private static final String[] WHITE_LIST_URL = {"/api/v1/auth/**",
-            "/v2/api-docs",
+            "/api/v1/admin/**",
             "/v3/api-docs",
             "/v3/api-docs/**",
             "/swagger-resources",
@@ -96,13 +96,13 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(ALWAYS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .formLogin(form -> form
-                        .loginPage("/alotra/login")
-                        .defaultSuccessUrl("/")
-                        .loginProcessingUrl("/alotra/login")
-                        .failureForwardUrl("/alotra/register")
-                        .permitAll()
-                )
+//                .formLogin(form -> form
+//                        .loginPage("/alotra/login")
+//                        .defaultSuccessUrl("/")
+//                        .loginProcessingUrl("/alotra/login")
+//                        .failureForwardUrl("/alotra/register")
+//                        .permitAll()
+//                )
                 .logout(logout ->
                         logout.logoutUrl("/alotra/logout")
                                 .addLogoutHandler(logoutHandler)
