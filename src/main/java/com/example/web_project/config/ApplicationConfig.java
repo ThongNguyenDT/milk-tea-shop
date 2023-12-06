@@ -1,6 +1,6 @@
 package com.example.web_project.config;
 
-import com.example.web_project.Repository.AccountRepository;
+import com.example.web_project.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
