@@ -27,7 +27,6 @@ import static com.example.web_project.entities.enums.Role.ADMIN;
 import static com.example.web_project.entities.enums.Role.USER;
 import static org.springframework.security.config.http.SessionCreationPolicy.ALWAYS;
 
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -90,6 +89,8 @@ public class SecurityConfiguration {
                                         .requestMatchers(mvc.pattern("/dashboard")).hasAnyAuthority(USER.name())
                                         .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.REQUEST).permitAll()
                                         .anyRequest()
+//                                        .permitAll()
+//                                        .denyAll()
                                         .authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(ALWAYS))
@@ -106,6 +107,8 @@ public class SecurityConfiguration {
                         logout.logoutUrl("/alotra/logout")
                                 .addLogoutHandler(logoutHandler)
                                 .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+
+
                 )
         ;
 

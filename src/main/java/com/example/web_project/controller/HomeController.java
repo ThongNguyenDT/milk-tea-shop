@@ -16,7 +16,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class HomeController {
 
-    private final AccountRepository repository;
+    private final AccountRepository repository; 
     private final AuthService authService;
 
 
@@ -41,7 +41,6 @@ public class HomeController {
             if (repository.findByUsername(name).isPresent())
                 model.put("username", name);
         }
-
 
         return "home";
     }
