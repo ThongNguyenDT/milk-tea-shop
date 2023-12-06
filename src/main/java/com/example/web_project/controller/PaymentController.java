@@ -1,9 +1,8 @@
 package com.example.web_project.controller;
 
-import com.example.web_project.entities.Payment;
 import com.example.web_project.entities.Viewgiohang;
-import com.example.web_project.services.PaymentService;
 import com.example.web_project.services.ViewgiohangService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +12,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/payments")
+@RequiredArgsConstructor
 public class PaymentController {
 
-    private final PaymentService paymentService;
-    private final ViewgiohangService viewgiohangService;
-
     @Autowired
-    public PaymentController(PaymentService paymentService, ViewgiohangService viewgiohangService) {
-        this.paymentService = paymentService;
-        this.viewgiohangService = viewgiohangService;
-    }
+    private final ViewgiohangService viewgiohangService;
 
     @GetMapping("/viewgiohang")
     public ResponseEntity<List<Viewgiohang>> getAllViewgiohang() {
