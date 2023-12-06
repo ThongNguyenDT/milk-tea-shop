@@ -25,10 +25,7 @@ import java.util.List;
 
 import static com.example.web_project.entities.enums.Role.ADMIN;
 import static com.example.web_project.entities.enums.Role.USER;
-import static org.springframework.http.HttpMethod.*;
-import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.security.config.http.SessionCreationPolicy.ALWAYS;
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
 @EnableWebSecurity
@@ -89,6 +86,7 @@ public class SecurityConfiguration {
 //                                .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
 //                                .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())
                                         .requestMatchers(mvc.pattern("/admin")).hasAnyAuthority(USER.name())
+                                        .requestMatchers(mvc.pattern("/dashboard")).hasAnyAuthority(USER.name())
                                         .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.REQUEST).permitAll()
                                         .anyRequest()
 //                                        .permitAll()

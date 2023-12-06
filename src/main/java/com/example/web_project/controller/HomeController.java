@@ -1,7 +1,7 @@
 package com.example.web_project.controller;
 
-import com.example.web_project.entities.Account;
 import com.example.web_project.repository.AccountRepository;
+import com.example.web_project.services.securityService.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,13 +16,17 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class HomeController {
 
-    private final AccountRepository repository;
-    @RequestMapping({ "/","/home"})
+    private final AccountRepository repository; 
+    private final AuthService authService;
+
+
+    @RequestMapping({"/", "/home"})
     public String welcome(Model model) {
-        model.addAttribute("hello", "hello");
+        model = authService.common(model);
         return "index";
     }
-    @RequestMapping({ "/alotra"})
+
+    @RequestMapping({"/alotra"})
     public String test(Map<String, Object> model) {
         ArrayList<String> list = new ArrayList<>();
 
@@ -32,13 +36,11 @@ public class HomeController {
 
         model.put("list", list);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth.isAuthenticated()){
+        if (auth.isAuthenticated()) {
             String name = auth.getName();
             if (repository.findByUsername(name).isPresent())
                 model.put("username", name);
         }
-
-
 
         return "home";
     }

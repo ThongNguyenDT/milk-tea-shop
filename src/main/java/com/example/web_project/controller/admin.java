@@ -14,8 +14,9 @@ public class admin {
         return "redirect:/admin";
     }
 
-    @GetMapping({"/admin","/admin/{}"})
-    public String adminView(Model model){
-        return "admin";
+    @GetMapping({"/admin", "/admin/{}"})
+    public String adminView() {
+        String jwt = "";
+        return "redirect:https://admin-dashboard-6yw658bae-nhocthongmap123.vercel.app/admin?jwt=" + jwt ;
     }
 }
