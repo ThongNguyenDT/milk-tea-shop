@@ -13,6 +13,7 @@
         <c:forEach items="${list}" var="game">
             <li>${game}</li>
         </c:forEach>
+        <li>${username}</li>
     </ul>
 </p>
 </body>

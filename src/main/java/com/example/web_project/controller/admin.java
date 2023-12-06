@@ -11,7 +11,7 @@ import java.util.Map;
 public class admin {
     @RequestMapping("/dashboard")
     public String welcome(Model model) {
-        return "helloword";
+        return "redirect:/admin";
     }
 
     @GetMapping({"/admin","/admin/{}"})

@@ -1,4 +1,4 @@
-package com.example.web_project.services.jwt;
+package com.example.web_project.services.securityService;
 
 import java.security.Key;
 import java.util.Date;

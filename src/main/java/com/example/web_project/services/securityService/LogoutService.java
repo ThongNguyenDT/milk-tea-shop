@@ -1,4 +1,4 @@
-package com.example.web_project.config;
+package com.example.web_project.services.securityService;
 
 import com.example.web_project.token.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,6 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +36,11 @@ public class LogoutService implements LogoutHandler {
             storedToken.setRevoked(true);
             tokenRepository.save(storedToken);
             SecurityContextHolder.clearContext();
+        }
+        try {
+            response.sendRedirect("/alotra");
+        } catch (IOException e) {
+            System.out.println(e);;
         }
     }
 }

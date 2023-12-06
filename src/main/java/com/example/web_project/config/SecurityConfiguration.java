@@ -24,8 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.web_project.entities.enums.Role.ADMIN;
+import static com.example.web_project.entities.enums.Role.USER;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.HttpMethod.DELETE;
+import static org.springframework.security.config.http.SessionCreationPolicy.ALWAYS;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
@@ -46,8 +48,6 @@ public class SecurityConfiguration {
             "/webjars/**",
             "/swagger-ui.html",
             "/resources/**",
-            "/dashboard",
-            "/admin",
 
     };
     private final JwtAuthenticationFilter jwtAuthFilter;
@@ -65,8 +65,7 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
-                                req.dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.REQUEST, DispatcherType.INCLUDE)
-                                        .permitAll()
+                                req
                                         .requestMatchers(
                                                 mvc.pattern(WHITE_LIST_URL[0]),
                                                 mvc.pattern(WHITE_LIST_URL[1]),
@@ -80,25 +79,38 @@ public class SecurityConfiguration {
                                                 mvc.pattern(WHITE_LIST_URL[9]),
                                                 mvc.pattern(WHITE_LIST_URL[11]),
                                                 mvc.pattern(WHITE_LIST_URL[10]),
-                                                mvc.pattern("/admin"),
-                                                mvc.pattern("/dashboard")
+//                                                mvc.pattern("/admin"),
+//                                                mvc.pattern("/dashboard"),
+                                                mvc.pattern("/alotra/**")
                                         )
                                         .permitAll()
                                         .requestMatchers(mvc.pattern("/api/v1/management/**")).hasAnyRole(ADMIN.name())
 //                                .requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())
 //                                .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
 //                                .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())
-//                                .requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(), MANAGER_DELETE.name())
+                                        .requestMatchers(mvc.pattern("/admin")).hasAnyAuthority(USER.name())
+                                        .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.REQUEST).permitAll()
                                         .anyRequest()
+//                                        .permitAll()
+//                                        .denyAll()
                                         .authenticated()
                 )
-                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(ALWAYS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .formLogin(form -> form
+                        .loginPage("/alotra/login")
+                        .defaultSuccessUrl("/")
+                        .loginProcessingUrl("/alotra/login")
+                        .failureForwardUrl("/alotra/register")
+                        .permitAll()
+                )
                 .logout(logout ->
-                        logout.logoutUrl("/api/v1/auth/logout")
+                        logout.logoutUrl("/alotra/logout")
                                 .addLogoutHandler(logoutHandler)
                                 .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+
+
                 )
         ;
 
