@@ -1,4 +1,4 @@
-package com.example.web_project.Repository;
+package com.example.web_project.repository;
 
 
 import com.example.web_project.entities.Account;
@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
     Optional<Account> findByUsername(String username);
+    Optional<Account> findByEmail(String username);
 }

@@ -28,7 +28,7 @@ public class Account implements UserDetails {
     @Column(name = "Username", length = 45)
     private String username;
 
-    @Column(name = "Password", length = 45)
+    @Column(name = "Password", length = 500)
     private String password;
 
     @Column(name = "Name", length = 100)

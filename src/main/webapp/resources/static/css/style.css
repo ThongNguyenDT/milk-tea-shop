@@ -8,7 +8,7 @@ body {
 
 .body-wrap {
   position: relative;
-  background-image: url(/assets/image/background/bg_01.png);
+  background-image: url("/resources/static/assets/image/background/bg_01.png");
   overflow-x: hidden;
   background-size: cover;
   background-color: #eceae3;
@@ -152,7 +152,7 @@ body {
   background-color: #151514;
   display: flex;
   align-items: center;
-  background-image: url("/assets/image/landing-page/3.jpg");
+  background-image: url("/resources/static/assets/image/landing-page/3.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -190,7 +190,7 @@ strong {
 }
 
 .cus-fullpage-items {
-  background-image: url(https://www.koithe.com/uploads/tab-contents/59e5ac7097ee9.jpg);
+  background-image: url("https://www.koithe.com/uploads/tab-contents/59e5ac7097ee9.jpg");
   width: 100%;
   height: 115vh;
   background-position: 100% 0;
@@ -202,16 +202,16 @@ strong {
 }
 
 .cus-fullpage-items:nth-child(1) {
-  background-image: url(https://www.koithe.com/uploads/tab-contents/59e5ac7097ee9.jpg);
+  background-image: url("https://www.koithe.com/uploads/tab-contents/59e5ac7097ee9.jpg");
 }
 .cus-fullpage-items:nth-child(2) {
   background-image: linear-gradient(rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.5)),
-    url(https://images.wallpaperscraft.com/image/single/coffee_still_life_flowers_73568_3840x2160.jpg);
+    url("https://images.wallpaperscraft.com/image/single/coffee_still_life_flowers_73568_3840x2160.jpg");
 }
 
 .cus-fullpage-items:nth-child(3) {
   background-image: linear-gradient(rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.5)),
-    url(/assets/image/landing-page/img_3.jpeg);
+    url("/resources/static/assets/image/landing-page/img_3.jpeg");
 }
 
 .cus-fullpage-items:nth-child(4) {
@@ -222,7 +222,7 @@ strong {
       rgba(0, 0, 0, 0.4920343137254902) 59%,
       rgba(0, 0, 0, 0.09987745098039214) 100%
     ),
-    url(https://images.wallpaperscraft.com/image/single/tea_drink_splash_391372_3840x2160.jpg);
+    url("https://images.wallpaperscraft.com/image/single/tea_drink_splash_391372_3840x2160.jpg");
 }
 .cus-fullpage-items:nth-child(5) {
   background-image: linear-gradient(
@@ -232,7 +232,7 @@ strong {
       rgba(0, 0, 0, 0.4920343137254902) 61%,
       rgba(0, 0, 0, 0.09987745098039214) 100%
     ),
-    url(https://images.wallpaperscraft.com/image/single/kettle_rain_chestnuts_408117_3840x2160.jpg);
+    url("https://images.wallpaperscraft.com/image/single/kettle_rain_chestnuts_408117_3840x2160.jpg");
 }
 
 .cus-fullpage-items:nth-child(6) {
@@ -243,7 +243,7 @@ strong {
       rgba(0, 0, 0, 0.4920343137254902) 59%,
       rgba(0, 0, 0, 0.09987745098039214) 100%
     ),
-    url(/assets/image/landing-page/img_4.jpeg);
+    url("/resources/static/assets/image/landing-page/img_4.jpeg");
 }
 
 .sec_3 .container {
