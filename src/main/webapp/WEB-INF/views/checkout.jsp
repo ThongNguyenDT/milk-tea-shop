@@ -69,7 +69,6 @@
                                     <img class="visa-logo-png-2026-1-icon2" alt="" src="./public/visalogopng2026-12@2x.png">
                                 </label>
                             </div>
-                            <!-- Add similar blocks for other payment options -->
                         </div>
 
                     </div>
@@ -85,7 +84,6 @@
                         </div>
 
                         <div class="oder">
-                            <!-- Add similar blocks for each item in the cart -->
                         </div>
                         <div class="voucher my-4 d-flex justify-content-start">
                             <input class="discount-code form-control" name="discount" id="discount" placeholder="Discount code" type="text" style="font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 20px; width: 100%;">
@@ -94,7 +92,6 @@
                             </button>
                         </div>
                         <div class="payment my-1">
-                            <!-- Payment details -->
                         </div>
                     </div>
 
