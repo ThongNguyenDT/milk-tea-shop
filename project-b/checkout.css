@@ -1,0 +1,212 @@
+.checkout2 {
+    position: relative;
+    background-color: var(--color-white);
+    width: 100%;
+    height: 946px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-11xl);
+    color: var(--color-black);
+    font-family: var(--font-roboto);
+  }
+  header {
+
+    height: 90px;
+  }
+  .bodywarp{
+    height: 100vh;
+  }
+ .container .row .col-12.center img{
+    width: 78px;
+    
+ }
+
+ .backgroundimg {
+  background-image: url('https://img.freepik.com/premium-photo/abstract-blur-coffee-shop-cafe-restaurant-background_1339-173181.jpg'), radial-gradient(circle at 50% 50%,rgb(207, 205, 211), rgba(110, 87, 87, 0));;
+  
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.body1{
+  background-color: #ffffffc9;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+.border-right {
+  border-right: 1.5px solid #000; 
+  height: auto
+}
+.border-top {
+  border-right: 1.5px solid #000; 
+  height: auto
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  margin-bottom: 15px; 
+}
+
+
+.button-back-to-order {
+  margin-bottom: 20px;
+}
+
+.customer-information, .cart-information {
+  font-family: 'Sora', sans-serif; 
+  font-weight: 600;
+  font-size: 30px; 
+}
+
+.information {
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.image-container img {
+  width: 70%; 
+  height: auto; 
+}
+
+input[type="radio"].radio {
+  width: 19px; 
+  height: 19px; 
+}
+.radio{
+  margin-right: 10px;
+}
+.back-to-order {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600; 
+  font-size: 40px;
+  color: #fff
+  ; 
+}
+
+.button-back-to-order {
+  width: 90%;
+  border-radius: 20px;
+  background-color: #F1A45D;
+}
+
+.payment {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment .merchandise-subtotal1 {
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 500; 
+  font-size: 25px; 
+}
+
+.payment .total-payment-parent .merchandise-subtotal1 {
+  font-size: 30px; 
+}
+.oder {
+  max-height: 700px; 
+  overflow-y: auto; 
+}
+
+@media (min-width: 768px) {
+  .col-6 {
+    width: 50%;
+  }
+  .please-check-your {
+    font-size: 20px; 
+    text-align: center; 
+}
+}
+@media (max-width: 576px) {
+  .payment .merchandise-subtotal1 {
+      font-size: 15px; 
+  }
+  
+  .payment .total-payment-parent .merchandise-subtotal1 {
+      font-size: 18px; 
+  }
+  .col-6 {
+    width: 100%;
+  }
+  .voucher input::placeholder {
+    font-size: 18px;
+  }
+  .voucher button {
+    font-size: 15px; 
+  }
+  
+  .button-back-to-order .back-to-order {
+    font-size: 30px; 
+  }
+  .credit-card-1-icon {
+    width: 25%; 
+  }
+
+  .please-check-your {
+      font-size: 18px; 
+      text-align: center; 
+  }
+  .oder1-child {
+    max-width: 45%; 
+    max-height: 45%;
+  }
+}
+.please-check-your {
+  font-family: 'Sora', sans-serif;
+  font-weight: 100;
+}
+.item-checkbox {
+  margin-right: 10px;
+  
+}
+input[type="checkbox"].item-checkbox {
+  width: 19px;
+  height: 19px;
+}
+.oder1-child {
+  width: 40%; 
+  height: 40%; 
+}
+.product-name {
+  font-weight: bold; 
+  font-family: 'Sora', sans-serif;
+}
+
+.price {
+  font-family: 'Sora', sans-serif; 
+}
+
+.quantity {
+  font-weight: bold;
+  font-family: 'Sora', sans-serif;
+}
+.cart-count {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 24px;
+  font-size: 20px;
+  margin-left: 5px;
+}
+.cart img {
+  width: 50px; 
+  height: 50px; 
+}
+a.button-back-to-order {
+  text-decoration: none !important;
+}
+.image-container {
+  margin-bottom: 30px;
+}
+.no-resize {
+  resize: none;
+}

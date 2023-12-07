@@ -15,64 +15,34 @@ import java.util.Set;
 @Table(name = "user", schema = "WebProject")
 public class User {
 
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "idAccount", nullable = false)
+    private Integer idAccount;
+
+    @Getter
+    @Column(name = "Username", length = 45)
+    private String username;
 
     @Column(name = "Name", length = 45)
     private String name;
 
-    @Column(name = "UserName", length = 45)
-    private String userName;
-
+    @Getter
     @Column(name = "Email", length = 45)
     private String email;
 
+    @Getter
     @Column(name = "Password", length = 45)
     private String password;
 
-    @Transient
-    private String passwordConfirm; // This field is not persisted to the database
-
+    @Getter
     @Column(name = "PhoneNumber", length = 45)
     private String phoneNumber;
 
+    @Getter
     @Column(name = "Address", length = 45)
     private String address;
 
-    // getters and setters
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
 }

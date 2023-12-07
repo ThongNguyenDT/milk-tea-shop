@@ -3,14 +3,16 @@ package com.example.web_project.controller;
 import com.example.web_project.entities.User;
 import com.example.web_project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/users")
+@Controller
+@RequestMapping("/api/usersprofile")
 public class UserController {
 
     private final UserService userService;
@@ -20,48 +22,15 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> userList = userService.getAllUsers();
-        return new ResponseEntity<>(userList, HttpStatus.OK);
-    }
+    @GetMapping("/profile")
+    public String getUserProfile(@RequestParam Integer idAccount, Model model) {
+        User userProfile = userService.getUserProfile (idAccount);
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
-        if (user != null) {
-            return new ResponseEntity<>(user, HttpStatus.OK);
+        if (userProfile != null) {
+            model.addAttribute("userProfile", userProfile);
+            return "user"; // Tên của view (user.jsp)
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return "notfound"; // Tên của view khi không tìm thấy (notfound.jsp)
         }
-    }
-
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User createdUser = userService.saveUser(user);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
-        User user = userService.getUserById(id);
-        if (user != null) {
-            user.setName(updatedUser.getName());
-            user.setPassword(updatedUser.getPassword());
-            user.setEmail(updatedUser.getEmail());
-            user.setPhoneNumber(updatedUser.getPhoneNumber());
-            user.setAddress(updatedUser.getAddress());
-
-            userService.saveUser(user);
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
