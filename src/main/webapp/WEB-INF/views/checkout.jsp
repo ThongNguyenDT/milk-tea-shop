@@ -15,7 +15,6 @@
 <body>
 <div class="bodywrap">
     <header>
-        <!-- Your header content goes here -->
     </header>
 
     <div class="checkout2 backgroundimg">
