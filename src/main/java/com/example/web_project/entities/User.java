@@ -23,11 +23,17 @@ public class User {
     @Column(name = "Name", length = 45)
     private String name;
 
+    @Column(name = "UserName", length = 45)
+    private String userName;
+
     @Column(name = "Email", length = 45)
     private String email;
 
     @Column(name = "Password", length = 45)
     private String password;
+
+    @Transient
+    private String passwordConfirm; // This field is not persisted to the database
 
     @Column(name = "PhoneNumber", length = 45)
     private String phoneNumber;
@@ -45,12 +51,20 @@ public class User {
         this.name = name;
     }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -60,4 +74,5 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
 }
