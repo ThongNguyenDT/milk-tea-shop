@@ -13,6 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/api/usersprofile")
+
 public class UserController {
 
     private final UserService userService;
@@ -22,7 +23,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/profile")
+    @GetMapping("/profile/{idAccount}")
     public String getUserProfile(@RequestParam Integer idAccount, Model model) {
         User userProfile = userService.getUserProfile (idAccount);
 
