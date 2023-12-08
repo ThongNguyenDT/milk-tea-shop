@@ -53,5 +53,7 @@ public class Viewgiohang {
 
     @Column(name = "Avatar", length = 45)
     private String avatar;
+    @Transient
+    private Integer quantity;
 
 }

@@ -68,39 +68,112 @@
                                     <img class="visa-logo-png-2026-1-icon2" alt="" src="./public/visalogopng2026-12@2x.png">
                                 </label>
                             </div>
+                            <div class="image-container d-flex align-items-center">
+                                <input type="radio" id="atm" name="paymentOption" class="radio">
+                                <label for="atm">
+                                    <img class="visa-logo-png-2026-1-icon1" alt="" src="./public/visalogopng2026-11@2x.png">
+                                </label>
+                            </div>
+                            <div class="image-container d-flex align-items-center">
+                                <input type="radio" id="cash" name="paymentOption" class="radio">
+                                <label for="cash">
+                                    <img class="money-1-icon" alt="" src="./public/money-1@2x.png">
+                                </label>
+                            </div>
                         </div>
+
 
                     </div>
                     <div class="col-6 my-4">
                         <div class="cart-information d-flex align-items-center flex-column center">Cart information</div>
                         <div class="cart d-flex flex-nowrap">
                             <a href="trangmuahang.html" style="display: flex; align-items: center;">
-                                    <span class="cart-icon">
-                                        <img src="./public/cart.png" alt="Cart Image">
-                                    </span>
+                                <span class="cart-icon">
+                                    <img src="./public/cart.png" alt="Cart Image">
+                                </span>
                             </a>
-                            <div id="cartItemCount" class="cart-count bg-danger text-white ms-1">4</div>
+                            <div id="cartItemCount" class="cart-count bg-danger text-white ms-1">${fn:length(cartInformation)}</div>
                         </div>
-
                         <div class="oder">
-                        </div>
-                        <div class="voucher my-4 d-flex justify-content-start">
-                            <input class="discount-code form-control" name="discount" id="discount" placeholder="Discount code" type="text" style="font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 20px; width: 100%;">
-                            <button class="button-confirm btn btn-lg" id="confirm" style="background-color: #F1A45D; color: white;">
-                                Confirm
-                            </button>
-                        </div>
-                        <div class="payment my-1">
+                            <c:forEach var="item" items="${cartInformation}">
+                                <div class="oder1 mt-4 d-flex align-items-center">
+                                    <input type="checkbox" class="item-checkbox">
+                                    <img class="oder1-child" alt="" src="${item.avatar}">
+                                    <div class="matcha-milk-tea-m-parent mx-2">
+                                        <div class="product-name">${item.name}</div>
+                                        <div class="price">${item.cost} VNĐ x ${item.quantity}</div>
+                                    </div>
+                                    <div class="total">${item.cost * item.quantity} VNĐ</div>
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
 
+                    <div class="payment my-1">
+                        <div class="merchandise-subtotal-parent d-flex justify-content-between align-items-center">
+                            <div class="merchandise-subtotal">
+                                <p class="merchandise-subtotal1">Merchandise Subtotal:</p>
+                            </div>
+                            <div class="vn4">
+                                <c:set var="merchandiseSubtotal" value="0" />
+                                <c:forEach var="item" items="${cartInformation}">
+                                    <c:set var="merchandiseSubtotal" value="${merchandiseSubtotal + item.cost}" />
+                                </c:forEach>
+                                <p class="merchandise-subtotal1">${merchandiseSubtotal} VNĐ</p>
+                            </div>
+                        </div>
+                        <div class="merchandise-subtotal-parent d-flex justify-content-between align-items-center">
+                            <div class="merchandise-subtotal">
+                                <p class="merchandise-subtotal1">Shipping Total:</p>
+                            </div>
+                            <div class="vn4">
+                                <p class="merchandise-subtotal1">30.000 VNĐ</p>
+                            </div>
+                        </div>
+                        <div class="total-payment-parent d-flex justify-content-between align-items-center">
+                            <div class="merchandise-subtotal">
+                                <p class="merchandise-subtotal1">Total Payment:</p>
+                            </div>
+                            <div class="vn8 text-danger">
+                                <c:set var="totalPayment" value="${merchandiseSubtotal + 30000}" />
+                                <p class="merchandise-subtotal1">${totalPayment} VNĐ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function redirectToPaymentPage() {
+                            var visaChecked = document.getElementById("visa").checked;
+                            var atmChecked = document.getElementById("atm").checked;
+                            var cashChecked = document.getElementById("cash").checked;
+
+                            if (visaChecked) {
+                                window.location.href = "vnpay.html";
+                            } else if (atmChecked) {
+                                window.location.href = "vnpay.html";
+                            } else if (cashChecked) {
+                                window.location.href = "success.jsp";
+                            }
+                        }
+                    </script>
+                    <c:set var="totalPayment" value="${merchandiseSubtotal + 30000}" />
                     <div class="row mt-3">
                         <div class="col-12 d-flex align-items-center flex-column center">
                             <div class="separator"></div>
-                            <a href="momo.html" class="button-back-to-order" id="oder">
+
+                            <a href="javascript:void(0);" class="button-back-to-order" id="order" onclick="redirectToPaymentPage()">
                                 <div class="button-back-to-order-child"></div>
                                 <div class="back-to-order" style="text-align: center;">Order</div>
                             </a>
+                            <form action="/pay" method="get" id="paymentForm">
+                                <input type="hidden" name="totalPayment" id="totalPaymentField" value="${totalPayment}" />
+                            </form>
+                            <script>
+                                function redirectToPaymentPage() {
+                                    var totalPayment = "${totalPayment}";
+                                    document.getElementById("totalPaymentField").value = totalPayment;
+                                    document.getElementById("paymentForm").submit();
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>
