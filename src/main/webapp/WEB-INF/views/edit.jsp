@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>User Profile</title>
+    <title>User Profile Edit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
@@ -73,7 +73,6 @@
 <body>
 <div class="container">
     <div class="main-body">
-
         <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -90,7 +89,7 @@
                                  class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <!-- Thymeleaf expression to access model attribute -->
-                                <h4 th:text="${userProfile.userName}"></h4>
+                                <h4 th:if="${userProfile}" th:text="${userProfile.userName}"></h4>
                             </div>
                         </div>
                     </div>
@@ -104,8 +103,7 @@
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <!-- Thymeleaf expression to access model attribute -->
-                                <span th:text="${userProfile.fullName}"></span>
+                                <span th:if="${userProfile}" th:text="${userProfile.fullName}"></span>
                             </div>
                         </div>
                         <hr>
