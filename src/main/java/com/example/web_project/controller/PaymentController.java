@@ -84,6 +84,17 @@ public class PaymentController {
         model.addAttribute("cartInformation", cartInformation);
         return "checkout";
     }
-
+    @GetMapping("/viewgiohang/byUsername/{username}")
+    public ResponseEntity<List<Viewgiohang>> getViewgiohangByUsername(@PathVariable String username) {
+        // Lấy danh sách Viewgiohang theo username từ service
+        List<Viewgiohang> viewgiohangList = viewgiohangService.getViewgiohangByUsername(username);
+        return new ResponseEntity<>(viewgiohangList, HttpStatus.OK);
+    }
+    @GetMapping("/api/payments/checkout")
+    public String showCheckoutPage(Model model, @RequestParam String username) {
+        List<Viewgiohang> cartInformation = viewgiohangService.getViewgiohangByUsername(username);
+        model.addAttribute("cartInformation", cartInformation);
+        return "checkout";
+    }
 
 }

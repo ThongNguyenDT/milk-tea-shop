@@ -33,10 +33,8 @@ public class ViewgiohangService {
     public Viewgiohang updateViewgiohang(Integer id, Viewgiohang updatedViewgiohang) {
         Viewgiohang existingViewgiohang = viewgiohangRepository.findById(id).orElse(null);
         if (existingViewgiohang != null) {
-            // Cập nhật thông tin của existingViewgiohang với thông tin từ updatedViewgiohang
             existingViewgiohang.setCount(updatedViewgiohang.getCount());
             existingViewgiohang.setDescription(updatedViewgiohang.getDescription());
-            // Cập nhật các trường khác tương tự
             return viewgiohangRepository.save(existingViewgiohang);
         }
         return null;
@@ -49,6 +47,8 @@ public class ViewgiohangService {
     public List<Viewgiohang> getViewgiohangByBillID(Integer billID) {
         return viewgiohangRepository.findByBillID(billID);
     }
+    public List<Viewgiohang> getViewgiohangByUsername(String username) {
+        return viewgiohangRepository.findByUsername(username);
+    }
 
-    // Các phương thức truy vấn khác nếu cần
 }

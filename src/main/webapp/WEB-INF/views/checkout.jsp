@@ -88,26 +88,78 @@
                         <div class="cart-information d-flex align-items-center flex-column center">Cart information</div>
                         <div class="cart d-flex flex-nowrap">
                             <a href="trangmuahang.html" style="display: flex; align-items: center;">
-                                <span class="cart-icon">
-                                    <img src="./public/cart.png" alt="Cart Image">
-                                </span>
+            <span class="cart-icon">
+                <img src="./public/cart.png" alt="Cart Image">
+            </span>
                             </a>
-                            <div id="cartItemCount" class="cart-count bg-danger text-white ms-1">${fn:length(cartInformation)}</div>
+                            <div id="cartItemCount" class="cart-count bg-danger text-white ms-1">0</div>
                         </div>
-                        <div class="oder">
-                            <c:forEach var="item" items="${cartInformation}">
-                                <div class="oder1 mt-4 d-flex align-items-center">
-                                    <input type="checkbox" class="item-checkbox">
-                                    <img class="oder1-child" alt="" src="${item.avatar}">
-                                    <div class="matcha-milk-tea-m-parent mx-2">
-                                        <div class="product-name">${item.name}</div>
-                                        <div class="price">${item.cost} VNĐ x ${item.quantity}</div>
-                                    </div>
-                                    <div class="total">${item.cost * item.quantity} VNĐ</div>
-                                </div>
-                            </c:forEach>
+                        <div class="oder" id="cartInformationContainer">
+                            <!-- Nơi để hiển thị thông tin giỏ hàng -->
                         </div>
                     </div>
+
+                    <script>
+                        function showCartInformation(username) {
+                            fetch(`/api/payments/viewgiohang/byUsername/${username}`)
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error('Network response was not ok');
+                                    }
+                                    return response.json();
+                                })
+                                .then(cartInformation => {
+                                    document.getElementById("cartItemCount").innerText = cartInformation.length;
+
+                                    const cartInformationContainer = document.getElementById("cartInformationContainer");
+                                    cartInformationContainer.innerHTML = "";
+
+                                    cartInformation.forEach(item => {
+                                        const cartItemDiv = document.createElement("div");
+                                        cartItemDiv.classList.add("oder1", "mt-4", "d-flex", "align-items-center");
+
+                                        const checkbox = document.createElement("input");
+                                        checkbox.type = "checkbox";
+                                        checkbox.classList.add("item-checkbox");
+                                        cartItemDiv.appendChild(checkbox);
+
+                                        const image = document.createElement("img");
+                                        image.classList.add("oder1-child");
+                                        image.alt = "";
+                                        image.src = item.avatar;
+                                        cartItemDiv.appendChild(image);
+
+                                        const productInfoDiv = document.createElement("div");
+                                        productInfoDiv.classList.add("matcha-milk-tea-m-parent", "mx-2");
+
+                                        const productNameDiv = document.createElement("div");
+                                        productNameDiv.classList.add("product-name");
+                                        productNameDiv.innerText = item.name;
+                                        productInfoDiv.appendChild(productNameDiv);
+
+                                        const priceDiv = document.createElement("div");
+                                        priceDiv.classList.add("price");
+                                        priceDiv.innerText = `${item.cost} VNĐ x ${item.quantity}`;
+                                        productInfoDiv.appendChild(priceDiv);
+
+                                        cartItemDiv.appendChild(productInfoDiv);
+
+                                        const totalDiv = document.createElement("div");
+                                        totalDiv.classList.add("total");
+                                        totalDiv.innerText = `${item.cost * item.quantity} VNĐ`;
+                                        cartItemDiv.appendChild(totalDiv);
+
+                                        cartInformationContainer.appendChild(cartItemDiv);
+                                    });
+                                })
+                                .catch(error => console.error('Lỗi khi lấy dữ liệu giỏ hàng:', error));
+                        }
+
+                        const pathArray = window.location.pathname.split('/');
+                        const usernameFromPath = pathArray[pathArray.length - 1];
+                        showCartInformation(usernameFromPath);
+                    </script>
+
 
                     <div class="payment my-1">
                         <div class="merchandise-subtotal-parent d-flex justify-content-between align-items-center">

@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface ViewgiohangRepository extends JpaRepository<Viewgiohang, Integer> {
     List<Viewgiohang> findByBillID(Integer billID);
-    // Các phương thức truy vấn khác nếu cần
+    List<Viewgiohang> findByUsername(String username);
+
 }
