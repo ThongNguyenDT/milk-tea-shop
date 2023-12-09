@@ -1,54 +1,22 @@
 package com.example.web_project.services;
+
 import com.example.web_project.entities.Viewgiohang;
-import com.example.web_project.repository.ViewgiohangRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class ViewgiohangService {
+public interface ViewgiohangService {
 
-    private final ViewgiohangRepository viewgiohangRepository;
+    List<Viewgiohang> getAllViewgiohang();
 
-    @Autowired
-    public ViewgiohangService(ViewgiohangRepository viewgiohangRepository) {
-        this.viewgiohangRepository = viewgiohangRepository;
-    }
+    Viewgiohang getViewgiohangById(Integer id);
 
-    public List<Viewgiohang> getAllViewgiohang() {
-        return viewgiohangRepository.findAll();
-    }
+    Viewgiohang createViewgiohang(Viewgiohang viewgiohang);
 
-    public Viewgiohang getViewgiohangById(Integer id) {
-        return viewgiohangRepository.findById(id).orElse(null);
-    }
+    Viewgiohang updateViewgiohang(Integer id, Viewgiohang updatedViewgiohang);
 
-    public Viewgiohang createViewgiohang(Viewgiohang viewgiohang) {
-        return viewgiohangRepository.save(viewgiohang);
-    }
+    void deleteViewgiohang(Integer id);
 
-    public Viewgiohang updateViewgiohang(Integer id, Viewgiohang updatedViewgiohang) {
-        Viewgiohang existingViewgiohang = viewgiohangRepository.findById(id).orElse(null);
-        if (existingViewgiohang != null) {
-            existingViewgiohang.setCount(updatedViewgiohang.getCount());
-            existingViewgiohang.setDescription(updatedViewgiohang.getDescription());
-            return viewgiohangRepository.save(existingViewgiohang);
-        }
-        return null;
-    }
+    List<Viewgiohang> getViewgiohangByBillID(Integer billID);
 
-    public void deleteViewgiohang(Integer id) {
-        viewgiohangRepository.deleteById(id);
-    }
-
-    public List<Viewgiohang> getViewgiohangByBillID(Integer billID) {
-        return viewgiohangRepository.findByBillID(billID);
-    }
-    public List<Viewgiohang> getViewgiohangByUsername(String username) {
-        return viewgiohangRepository.findByUsername(username);
-    }
-
+    List<Viewgiohang> getViewgiohangByUsername(String username);
 }
