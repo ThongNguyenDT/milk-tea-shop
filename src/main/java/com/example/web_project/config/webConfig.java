@@ -4,6 +4,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -13,6 +14,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.example")
 public class webConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedMethods("*");
+    }
     @Bean
     public InternalResourceViewResolver jspViewResolver() {
         InternalResourceViewResolver resolver= new InternalResourceViewResolver();
@@ -52,6 +58,10 @@ public class webConfig implements WebMvcConfigurer {
                 .addResourceLocations("WEB_INF/common/");
         registry.addResourceHandler("auth/**")
                 .addResourceLocations("WEB_INF/views/auth/");
+        registry.addResourceHandler("error/**")
+                .addResourceLocations("WEB_INF/views/error/");
+        registry.addResourceHandler("admin/**")
+                .addResourceLocations("WEB_INF/views/admin/");
 
 //        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
 //        registry.addResourceHandler("/js/**").addResourceLocations("/js/");

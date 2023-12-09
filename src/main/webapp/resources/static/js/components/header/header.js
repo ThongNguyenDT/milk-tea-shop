@@ -11,6 +11,58 @@ link = document.createElement("link");
 link.rel = "stylesheet";
 link.href = "/resources/static/js/components/header/hover_btn.css";
 head.appendChild(link);
+link = document.createElement("link");
+link.rel = "stylesheet";
+link.href = "/resources/static/css/style.css";
+head.appendChild(link);
+link = document.createElement("script");
+link.defer = "defer";
+link.src = "https://kit.fontawesome.com/ac291e7c29.js";
+link.rel = "anonymous";
+head.appendChild(link);
+
+
+const auth = (user) => {
+    console.log(user)
+
+    if (user == null || user.length == 0) {
+        return `<li>
+                <button class="Btn_hover ms-lg-2 ms-xl-3" onclick="window.location.href='login';">
+                    Sign in
+                </button>
+            </li>`
+    }
+    else {
+        const name = user[0].username
+        return `<li>
+                    <div class="dropdown">
+                      <span
+                        class="Button-content"
+                        style="margin-left: 20px"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                         <img src="https://avatars.githubusercontent.com/u/68158536?v=4" alt="" size="32"
+                                         height="32" width="32" data-view-component="true" class="avatar circle">
+                      </span>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                      </ul>
+                    </div>
+                        <li class="Button-content"
+                            id="dropdownMenuButton"
+                            data-mdb-toggle="dropdown"
+                            aria-expanded="false"
+                            style="margin-left: 2px"> ${name}
+                        </li>
+               </li>
+`
+
+    }
+}
+
 
 const header = document.querySelector("header");
 header.className = "header-section";
@@ -18,7 +70,7 @@ header.innerHTML = `
 <nav class="navbar navbar-expand-xl bd-navbar">
     <div class="container-md">
         <!-- nav logo -->
-        <a class="navbar-brand me-0 d-flex align-content-center " href="#">
+        <a class="navbar-brand me-0 d-flex align-content-center " href="/">
             <svg width="100" height="72" viewBox="0 0 160 109.375" class="css-1j8o68f">
                 <defs>
                     <linearGradient id="a">
@@ -65,20 +117,20 @@ header.innerHTML = `
         <!-- nav list -->
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" aria-current="page" href="#">HOME</a>
+                <li class="nav-item active" style="cursor: pointer">
+                    <a class="nav-link" aria-current="page" href="/">HOME</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" style="cursor: pointer">
                     <a class="nav-link" onclick="myFunction(7)">ABOUT US</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">DRINK</a>
+                <li class="nav-item" style="cursor: pointer">
+                    <a class="nav-link" href="/alotra/shop">DRINK</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">STORE</a>
+                <li class="nav-item" style="cursor: pointer">
+                    <a class="nav-link" onclick="myFunction(8)">STORE</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT</a>
+                <li class="nav-item" style="cursor: pointer">
+                    <a class="nav-link" onclick="myFunction(8)">CONTACT</a>
                 </li>
             </ul>
 
@@ -96,12 +148,28 @@ header.innerHTML = `
                         <small class=" cart_counter">2</small>
                     </button>
                 </li>
-                <li>
-                    <button class="Btn_hover ms-lg-2 ms-xl-3" onclick="window.location.href='login';">
-                        Sign in
-                    </button>
-                </li>
+                ${auth(jsonUser)}
             </ul>
         </div>
     </div>
 </nav>`;
+
+function myFunction(i) {
+    if (window.location.pathname == "/") {
+        const index = [4242, 5278, 6314, 7350, 8386, 9422, 10458, 12400, 13871];
+        window.scrollTo(0, index[i]);
+    }
+    else{
+        window.location.href = "/#"+ i
+    }
+
+}
+
+function pageLoad() {
+    if (window.location.hash != '') {
+        var page = window.location.hash .replace("#","");
+        myFunction(page);
+    }
+}
+
+pageLoad();

@@ -1,6 +1,7 @@
 package com.example.web_project.entities;
 
 import com.example.web_project.entities.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,6 +30,7 @@ public class Account implements UserDetails {
     private String username;
 
     @Column(name = "Password", length = 500)
+    @JsonIgnore
     private String password;
 
     @Column(name = "Name", length = 100)
@@ -52,26 +54,31 @@ public class Account implements UserDetails {
     private Set<Bill> bills = new LinkedHashSet<>();
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(type.name()));
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
         return true;
     }

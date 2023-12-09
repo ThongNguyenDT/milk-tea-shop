@@ -32,4 +32,14 @@ public class Bill {
     @ToString.Exclude
     private Set<Billinfo> billinfos = new LinkedHashSet<>();
 
+    @Column(name = "isPaid")
+    private boolean paid;
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
 }

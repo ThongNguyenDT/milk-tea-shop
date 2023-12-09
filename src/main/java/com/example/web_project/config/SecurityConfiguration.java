@@ -27,7 +27,6 @@ import static com.example.web_project.entities.enums.Role.ADMIN;
 import static com.example.web_project.entities.enums.Role.USER;
 import static org.springframework.security.config.http.SessionCreationPolicy.ALWAYS;
 
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -35,7 +34,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.ALW
 public class SecurityConfiguration {
 
     private static final String[] WHITE_LIST_URL = {"/api/v1/auth/**",
-            "/v2/api-docs",
+            "/api/v1/admin/**",
             "/v3/api-docs",
             "/v3/api-docs/**",
             "/swagger-resources",
@@ -90,22 +89,26 @@ public class SecurityConfiguration {
                                         .requestMatchers(mvc.pattern("/dashboard")).hasAnyAuthority(USER.name())
                                         .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.REQUEST).permitAll()
                                         .anyRequest()
+//                                        .permitAll()
+//                                        .denyAll()
                                         .authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(ALWAYS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .formLogin(form -> form
-                        .loginPage("/alotra/login")
-                        .defaultSuccessUrl("/")
-                        .loginProcessingUrl("/alotra/login")
-                        .failureForwardUrl("/alotra/register")
-                        .permitAll()
-                )
+//                .formLogin(form -> form
+//                        .loginPage("/alotra/login")
+//                        .defaultSuccessUrl("/")
+//                        .loginProcessingUrl("/alotra/login")
+//                        .failureForwardUrl("/alotra/register")
+//                        .permitAll()
+//                )
                 .logout(logout ->
                         logout.logoutUrl("/alotra/logout")
                                 .addLogoutHandler(logoutHandler)
                                 .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+
+
                 )
         ;
 

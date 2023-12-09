@@ -1,0 +1,535 @@
+header {
+  height: 90px;
+}
+
+.background {
+  background-image: url('https://images7.alphacoders.com/528/528691.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+.background2 {
+  background-image: url('https://t4.ftcdn.net/jpg/02/40/76/45/360_F_240764599_yvH2nq4gCMrg2HIW4yFqv2o9Tzir2h1q.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+html,
+body,
+.bodywrap,
+.background {
+  height: 104%;
+}
+
+.row1 {
+  transform: translateY(150px);
+}
+
+.row2 {
+  transform: translateY(230px);
+}
+
+.DRINK {
+  font-family: Neuton, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 120px;
+  font-style: normal;
+  margin-top: -50px;
+}
+
+.titlebox .AloTra {
+  font-family: Moon Dance, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 60px;
+  font-style: normal;
+}
+
+.scroll-container {
+  width: 800px;
+  height: 440px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  border: none;
+  overflow-y: hidden;
+
+  transform: translateX(250px);
+}
+
+.content {
+  width: 1800px;
+  height: 400px;
+
+
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #7e7c02;
+  border-radius: 5px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #fcffe9b6;
+  border-radius: 5px;
+
+}
+
+.modal {
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 420px;
+  height: fit-content;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  text-align: center;
+  margin: 5% auto;
+  max-width: 90%;
+  overflow-y: auto;
+  background-color: white;
+  padding: 20px;
+  white-space: normal;
+
+  /* Thêm thuộc tính này */
+}
+
+.titlebox {
+  transform: translateX(-40px);
+}
+
+.buybutton {
+  width: 500px;
+  height: 40px;
+  transform: translateX(150px) translateY(-20px);
+  font-size: 25px;
+}
+
+.line {
+  transform: translateX(-80px);
+}
+
+.icontea {
+  transform: translateX(40px);
+}
+
+.AloTra {
+  transform: translateX(50px);
+}
+
+.icontea2 {
+  transform: translateX(5px);
+}
+
+.AloTra2 {
+  transform: translateX(5px);
+}
+
+.icontea3 {
+  transform: translateX(25px);
+}
+
+.AloTra3 {
+  transform: translateX(35px);
+}
+
+.icontea4 {
+  transform: translateX(30px);
+}
+
+.AloTra4 {
+  transform: translateX(30px);
+}
+
+.icontea5 {
+  transform: translateX(20px) translateY(6px);
+}
+
+.AloTra5 {
+  transform: translateX(30px);
+}
+
+.icontea6 {
+  transform: translateX(25px) translateY(6px);
+}
+
+.AloTra6 {
+  transform: translateX(35px);
+}
+
+.AloTraFD {
+  font-size: 60px;
+  font-style: normal;
+  margin-top: 50px
+}
+
+.listtea {
+  margin-left: -100px;
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.line {
+  border: 0;
+  border-top: 1px solid #060606;
+  width: 250px;
+}
+
+.cost {
+  margin-left: 200px;
+  margin-top: -30px;
+}
+
+.drink_list {
+  margin-top: 10px;
+}
+
+@media (max-width:1400px) {
+
+  .scroll-container {
+    transform: translateX(135px);
+  }
+
+  .content {
+    transform: translateX(135px);
+  }
+
+  .modal {
+    transform: translateX(-235px);
+
+  }
+
+  .modal-content {
+    transform: translateX(-400px) translateY(-75px);
+    max-width: 40%;
+    max-height: 100%;
+    font-size: 25px;
+  }
+
+  .buybutton {
+    transform: translateX(150px) translateY(-75px);
+    width: 700px;
+    height: 70px;
+  }
+
+  .background2 .row {
+    transform: translateX(40px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .scroll-container {
+    transform: translateX(75px);
+  }
+
+  .content {
+    transform: translateX(115px);
+  }
+
+  .modal-content {
+    transform: translateX(-380px) translateY(-55px);
+  }
+
+  .buybutton {
+    transform: translateX(170px) translateY(-80px);
+
+    width: 700px;
+    height: 70px;
+  }
+
+  .background2 .row {
+    transform: translateX(40px);
+  }
+
+  .titlebox {
+    transform: translateX(-40px);
+  }
+
+  .DRINK {
+    transform: translateX(40px);
+  }
+
+  .AloTra {
+    transform: translateX(50px);
+  }
+}
+
+@media (max-width: 992px) {
+  .scroll-container {
+    width: 500px;
+    transform: translateX(120px);
+  }
+
+  .DRINK {
+    transform: translateX(20px);
+  }
+
+  .AloTra {
+    transform: translateX(30px);
+  }
+
+  .content {
+    transform: translateX(115px);
+  }
+
+  .modal-content {
+    transform: translateX(-530px) translateY(-55px);
+    max-width: 440px;
+    font-size: 25px
+  }
+
+  .buybutton {
+    transform: translateX(150px) translateY(-80px);
+
+    width: 440px;
+    height: 70px;
+  }
+
+
+  .AloTraFD {
+    font-size: 50px;
+  }
+
+
+
+  .icontea {
+    transform: translateX(10px);
+  }
+
+
+  .listtea {
+    font-size: 15px;
+  }
+
+  .cost {
+    transform: translateX(-30px) translateY(7px);
+
+  }
+
+  .line {
+    width: 200px;
+    transform: translateX(-70px);
+  }
+
+  .AloTra2 {
+    transform: translateX(-10px);
+  }
+
+  .icontea2 {
+    transform: translateX(-10px);
+  }
+
+  .AloTra3 {
+    transform: translateX(30px);
+  }
+
+  .icontea5 {
+    transform: translateX(10px);
+  }
+
+  .AloTra5 {
+    transform: translateX(15px);
+  }
+
+  .background2 {
+    height: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .background2 {
+    height: 90%;
+  }
+
+  .scroll-container {
+    width: 500px;
+    transform: translateX(20px) translateY(50px);
+  }
+
+  .AloTraFD {
+    font-size: 40px;
+    transform: translateX(-10px);
+  }
+
+  .coltea {
+    transform: translateX(20px)
+  }
+
+  .colmilk {
+    transform: translateX(130px)
+  }
+
+  .colcoffee {
+    transform: translateX(-50px) translateY(280px);
+
+  }
+
+  .colcake {
+    transform: translateX(25px) translateY(-18px);
+
+  }
+
+  .colbread {
+    transform: translateX(-150px) translateY(270px);
+
+  }
+
+  .colother {
+    transform: translateX(-50px) translateY(270px);
+
+  }
+
+  .line {
+    width: 200px;
+    transform: translateX(-70px);
+  }
+
+  .icontea {
+    transform: translateX(40px);
+  }
+
+  .AloTra {
+    transform: translateX(50px);
+  }
+}
+
+@media (max-width: 576px) {
+
+
+  .background2 {
+    height: 180vh;
+  }
+
+  .scroll-container {
+    width: 80%;
+    transform: translateX(40px);
+  }
+
+  .DRINK {
+    font-size: 80px;
+    transform: translateX(40px);
+  }
+
+  .titlebox .AloTra {
+    font-size: 40px;
+    transform: translateY(-15px) translateX(50px);
+  }
+
+  .content {
+    transform: translateX(115px);
+
+  }
+
+  .modal-content {
+    transform: translateX(-677px) translateY(-60px);
+    max-width: 200px;
+    font-size: 25px
+  }
+
+  .buybutton {
+    transform: translateX(124px) translateY(-80px);
+
+    width: 200px;
+    height: 70px;
+  }
+  .background2 .row {
+    width: 180px;
+  }
+
+  .AloTraFD {
+    font-size: 40px;
+    transform: translateX(60px)
+
+  }
+
+  .coltea {
+    transform: translateX(100px)
+  }
+
+  .icontea {
+    transform: translateX(-5px)
+  }
+
+  .AloTra {
+    transform: translateX(80px)
+  }
+
+  .colmilk {
+    transform: translateY(280px) translateX(40px)
+  }
+
+  .icontea2 {
+    transform: translateX(-10px)
+  }
+  .AloTra2
+  {
+    transform: translateX(10px)
+
+  }
+
+  .colcoffee {
+    transform: translateY(560px) translateX(-20px)
+  }
+
+  .icontea3 {
+    transform: translateX(0px)
+  }
+
+  .AloTra3 {
+    transform: translateX(40px)
+  }
+
+  .colcake {
+    transform: translateY(550px) translateX(100px)
+  }
+
+  .icontea4 {
+    transform: translateX(-10px)
+  }
+
+  .AloTra4 {
+    transform: translateX(60px)
+  }
+
+  .colbread {
+    transform: translateY(840px) translateX(40px)
+  }
+
+  .icontea5 {
+    transform: translateX(-10px)
+  }
+
+  .AloTra5 {
+    transform: translateX(40px)
+  }
+
+  .colother {
+    transform: translateY(1130px) translateX(-20px)
+  }
+
+  .icontea6 {
+    transform: translateX(-10px)
+  }
+
+  .AloTra6 {
+    transform: translateX(50px)
+  }
+}
