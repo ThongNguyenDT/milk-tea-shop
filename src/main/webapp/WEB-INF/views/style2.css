@@ -1,0 +1,167 @@
+header {
+    height: 90px;
+}
+
+svg.active {
+    background-color: bisque;
+}
+
+img.active {
+    background-color: bisque;
+}
+
+
+
+.background1 {
+    background-image: url('https://img.freepik.com/premium-photo/abstract-blur-coffee-shop-cafe-restaurant-background_1339-173181.jpg'), radial-gradient(circle at 50% 50%, rgb(207, 205, 211), rgba(110, 87, 87, 0));
+;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.body1 {
+    background-color: #ffffffc9;
+}
+
+.background3 {
+    background-color: rgb(14, 71, 28);
+    height: 38vh;
+}
+
+.background3 .container {
+    gap: 6rem;
+}
+
+.con1 {
+    background-color: rgba(172, 175, 172, 0.801);
+
+}
+
+@media (min-width: 992px) {
+    .row {
+        width: 100%;
+    }
+}
+
+.background3 .circle {
+    border-radius: 100%;
+    background: #FDDC32;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+.circle img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%; /* Giới hạn kích thước tối đa của hình ảnh */
+    max-height: 100%; /* Giới hạn kích thước tối đa của hình ảnh */
+    object-fit:  scale-down;
+    object-position: center center;
+}
+.background3 .Name {
+    overflow: hidden;
+    padding-left: 51px;
+    padding-right: 51px;
+}
+
+.background3 h1 {
+    font-family: Molengo, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    width: 100%;
+    line-height: normal;
+    color: hsl(0, 0%, 100%);
+}
+
+.row .linecnt {
+    width: 1%;
+}
+
+
+@media (max-width: 992px) {
+    .background3 h1 {
+        font-family: Molengo, sans-serif;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 400;
+        width: 100%;
+        line-height: normal;
+        color: hsl(0, 0%, 100%);
+        text-align: center;
+    }
+
+    .background3 .circle {
+        height: 220px;
+        width: 220px;
+    }
+}
+
+@media (max-width: 576px) {
+    .background1 {
+        width: 200%;
+        height: fit-content;
+    }
+
+    .background3 h1 {
+        font-family: Molengo, sans-serif;
+        font-size: 35px;
+        font-style: normal;
+        font-weight: 400;
+        width: 100%;
+        line-height: normal;
+        color: hsl(0, 0%, 100%);
+        text-align: center;
+    }
+
+    .background3 .circle {
+        height: 200px;
+        width: 200px;
+
+    }
+
+    .row .linecnt {
+        display: none;
+    }
+
+    .cntt .Order {
+        transform: translateY(-20px);
+    }
+
+    .cntt .Orderbor {
+        transform: translateY(-20px);
+    }
+
+    .col .sizeoption {
+        transform: translateX(10px);
+    }
+
+    .col .sizeclass {
+        transform: translateX(10px);
+
+    }
+
+    .col .Foam {
+        transform: translateX(10px);
+    }
+
+    .col .foamclass {
+        transform: translateX(10px);
+    }
+}
+
+@media (max-width: 1400px) {
+    .row .linecnt {
+        display: none;
+    }
+
+    .cntt .Order {
+        transform: translateY(-20px);
+    }
+
+    .cntt .Orderbor {
+        transform: translateY(-20px);
+    }
+}

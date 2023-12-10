@@ -13,4 +13,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     // Tìm sản phẩm theo chi phí
     List<Product> findByCost(Integer cost);
+
+    List<Product> findAllByCategory(String category);
+
+    Double findCost(int idProduct);
 }
