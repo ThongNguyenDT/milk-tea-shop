@@ -105,7 +105,7 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <c:if test="${not empty Account}">
-                                    <span>${Account.Name}</span>
+                                    <h4><c:out value="${Account.Username}"/></h4>
                                 </c:if>
                             </div>
                         </div>
