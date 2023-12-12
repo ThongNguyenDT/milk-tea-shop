@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Moon Dance">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rye">
