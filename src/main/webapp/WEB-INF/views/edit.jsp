@@ -88,9 +88,8 @@
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
                                  class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <%-- JSTL expression to access model attribute --%>
                                 <c:if test="${not empty Account}">
-                                    <h4>${Account.Username}</h4>
+                                    <h4><c:out value="${Account.Username}"/></h4>
                                 </c:if>
                             </div>
                         </div>
