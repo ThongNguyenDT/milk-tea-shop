@@ -14,9 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity(name = "Bill")
-@Table(name = "bill", schema = "WebProject", indexes = {
-        @Index(name = "AccountID_idx", columnList = "idAccount")
-})
+@Table(name = "bill", schema = "WebProject")
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,11 +33,4 @@ public class Bill {
     @Column(name = "isPaid")
     private boolean paid;
 
-    public boolean isPaid() {
-        return paid;
-    }
-
-    public void setPaid(boolean paid) {
-        this.paid = paid;
-    }
 }

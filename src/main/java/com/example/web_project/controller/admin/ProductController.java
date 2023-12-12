@@ -1,4 +1,4 @@
-package com.example.web_project.controller;
+package com.example.web_project.controller.admin;
 
 import com.example.web_project.entities.Product;
 import com.example.web_project.services.PrebuyService;

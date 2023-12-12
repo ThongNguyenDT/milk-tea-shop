@@ -1,4 +1,4 @@
-package com.example.web_project.controller;
+package com.example.web_project.controller.menu;
 
 import com.example.web_project.entities.Product;
 import com.example.web_project.repository.DrinkcostRepository;
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
 @RequiredArgsConstructor
@@ -41,13 +43,17 @@ public class PrebuyController {
             Model model) {
 
         // Lấy giá trị addcost từ bảng DrinkCost
-        double addCost = drinkCostRepository.findTotalcost(idSize, idFoam, idAddin, idTopping);
+        double addCost = drinkCostRepository.findTotalCostByIdSizeAndIdFoamAndIdAddinAndIdTopping(idSize, idFoam, idAddin, idTopping);
 
         // Lấy giá trị basecost từ bảng Product
-        double baseCost = productRepository.findCost(idProduct);
+        Integer baseCost = 0;
+
+        AtomicReference<Integer> cost = null;
+        productRepository.findById(idProduct).ifPresent(p -> cost.set(p.getCost()));
+        baseCost = cost.get();
 
         // Tính toán totalCost
-        double totalCost = (baseCost + addCost);
+        double totalCost = ((double) baseCost + addCost);
 
         // Thêm thông tin tính toán vào Model
         model.addAttribute("totalCost", totalCost);

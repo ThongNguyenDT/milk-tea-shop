@@ -1,4 +1,4 @@
-package com.example.web_project.controller;
+package com.example.web_project.controller.user;
 
 import com.example.web_project.entities.Account;
 import com.example.web_project.services.AccountService;
