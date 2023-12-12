@@ -76,7 +76,7 @@
         <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Account</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit</li>
             </ol>
         </nav>
 
