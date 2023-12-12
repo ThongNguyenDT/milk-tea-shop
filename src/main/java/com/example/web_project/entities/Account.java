@@ -23,7 +23,7 @@ public class Account implements UserDetails {
     @Column(name = "idAccount", nullable = false)
     private Integer id;
 
-    @Column(name = "Avatar", length = 45)
+    @Column(name = "Avatar", length = 500)
     private String avatar;
 
     @Column(name = "Username", length = 45)

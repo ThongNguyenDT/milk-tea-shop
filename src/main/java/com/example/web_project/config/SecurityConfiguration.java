@@ -35,7 +35,7 @@ public class SecurityConfiguration {
 
     private static final String[] WHITE_LIST_URL = {"/api/v1/auth/**",
             "/api/v1/admin/**",
-            "/v3/api-docs",
+            "/api/v1/payments/viewgiohang/**",
             "/v3/api-docs/**",
             "/swagger-resources",
             "/swagger-resources/**",
@@ -76,9 +76,8 @@ public class SecurityConfiguration {
                                                 mvc.pattern(WHITE_LIST_URL[9]),
                                                 mvc.pattern(WHITE_LIST_URL[11]),
                                                 mvc.pattern(WHITE_LIST_URL[10]),
-//                                                mvc.pattern("/admin"),
-//                                                mvc.pattern("/dashboard"),
-                                                mvc.pattern("/alotra/**")
+                                                mvc.pattern("/alotra/**"),
+                                                mvc.pattern("/prebuy/**")
                                         )
                                         .permitAll()
                                         .requestMatchers(mvc.pattern("/api/v1/management/**")).hasAnyRole(ADMIN.name())
@@ -96,13 +95,13 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(ALWAYS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-//                .formLogin(form -> form
-//                        .loginPage("/alotra/login")
-//                        .defaultSuccessUrl("/")
-//                        .loginProcessingUrl("/alotra/login")
-//                        .failureForwardUrl("/alotra/register")
-//                        .permitAll()
-//                )
+                .formLogin(form -> form
+                        .loginPage("/alotra/login")
+                        .defaultSuccessUrl("/")
+                        .loginProcessingUrl("/alotra/login")
+                        .failureForwardUrl("/alotra/register")
+                        .permitAll()
+                )
                 .logout(logout ->
                         logout.logoutUrl("/alotra/logout")
                                 .addLogoutHandler(logoutHandler)

@@ -56,12 +56,18 @@ public class webConfig implements WebMvcConfigurer {
                 .addResourceLocations("WEB_INF/**")
                 .addResourceLocations("WEB_INF/decorators/")
                 .addResourceLocations("WEB_INF/common/");
-        registry.addResourceHandler("auth/**")
-                .addResourceLocations("WEB_INF/views/auth/");
-        registry.addResourceHandler("error/**")
-                .addResourceLocations("WEB_INF/views/error/");
         registry.addResourceHandler("admin/**")
                 .addResourceLocations("WEB_INF/views/admin/");
+        registry.addResourceHandler("auth/**")
+                .addResourceLocations("WEB_INF/views/auth/");
+        registry.addResourceHandler("checkout/**")
+                .addResourceLocations("WEB_INF/views/checkout/");
+        registry.addResourceHandler("error/**")
+                .addResourceLocations("WEB_INF/views/error/");
+        registry.addResourceHandler("menu/**")
+                .addResourceLocations("WEB_INF/views/menu/");
+        registry.addResourceHandler("user/**")
+                .addResourceLocations("WEB_INF/views/user/");
 
 //        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
 //        registry.addResourceHandler("/js/**").addResourceLocations("/js/");

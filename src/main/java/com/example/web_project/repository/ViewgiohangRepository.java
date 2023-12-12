@@ -10,5 +10,7 @@ import java.util.List;
 @Repository
 public interface ViewgiohangRepository extends JpaRepository<Viewgiohang, Integer> {
     List<Viewgiohang> findByBillID(Integer billID);
+
+    List<Viewgiohang> findByIdAccount(Integer IdAccount);
     // Các phương thức truy vấn khác nếu cần
 }

@@ -9,10 +9,7 @@ import com.example.web_project.services.securityService.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -25,12 +22,12 @@ public class PrebuyController {
     private final ProductRepository productRepository;
     private final PrebuyService prebuyService;
 
-    @GetMapping("/checkout/{productId}")
-    public String checkout(@PathVariable Integer productId, Model model) {
+    @GetMapping("/prebuy/{productId}")
+    public String prebuy(@PathVariable Integer productId, Model model) {
         model = authService.common(model);
         Product product = productService.getProductById(productId);
         model.addAttribute("product", product);
-        return "prebuy";
+        return "user/prebuy";
     }
 
     @GetMapping("/calculateTotalCost/{productId}")
@@ -59,7 +56,7 @@ public class PrebuyController {
         model.addAttribute("totalCost", totalCost);
 
         // Gọi lại phương thức checkout để render lại trang với thông tin tính toán
-        return checkout(idProduct, model);
+        return prebuy(idProduct, model);
     }
 
     @PostMapping("/addToOrder")

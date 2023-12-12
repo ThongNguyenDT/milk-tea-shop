@@ -18,6 +18,6 @@ public class menu {
     @RequestMapping({"/shop"})
     public String shop1(Model model) {
         model = authService.common(model);
-        return "menu/menu";
+        return "menu/menu1";
     }
 }

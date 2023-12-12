@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/api/accounts/edit")
+@RequestMapping("/accounts/edit")
 public class EditController {
 
     private final AccountService accountService;
@@ -27,9 +27,9 @@ public class EditController {
 
         if (account != null) {
             model.addAttribute("userToEdit", account);
-            return "edit"; // Assuming you have an edit.html Thymeleaf template
+            return "user/edit"; // Assuming you have an edit.html Thymeleaf template
         } else {
-            return "notfound";
+            return "user/notfound";
         }
     }
 
@@ -41,7 +41,7 @@ public class EditController {
             return "redirect:/api/accounts/" + idAccount;
         } else {
             // Handle the case where the user is not found
-            return "notfound";
+            return "user/notfound";
         }
     }
 }

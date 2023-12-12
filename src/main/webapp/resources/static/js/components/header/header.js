@@ -21,10 +21,12 @@ link.src = "https://kit.fontawesome.com/ac291e7c29.js";
 link.rel = "anonymous";
 head.appendChild(link);
 
+const logoutHandel= () => fetch(`/alotra/logout`).then(window.location.href = '/')
+
+
 
 const auth = (user) => {
     console.log(user)
-
     if (user == null || user.length == 0) {
         return `<li>
                 <button class="Btn_hover ms-lg-2 ms-xl-3" onclick="window.location.href='login';">
@@ -48,7 +50,7 @@ const auth = (user) => {
                                          height="32" width="32" data-view-component="true" class="avatar circle">
                       </span>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" onclick='logoutHandel()'>Logout</a></li>
                       </ul>
                     </div>
                         <li class="Button-content"
@@ -143,7 +145,7 @@ header.innerHTML = `
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="icon_btn cart_btn m-lg-1 ">
+                    <button type="button" class="icon_btn cart_btn m-lg-1 " onclick="window.location.href = '/alotra/checkout'">
                         <i class=" icon fa-solid fa-cart-shopping"></i>
                         <small class=" cart_counter">2</small>
                     </button>

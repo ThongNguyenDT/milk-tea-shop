@@ -16,4 +16,6 @@ public interface ViewgiohangService {
     void deleteViewgiohang(Integer id);
 
     List<Viewgiohang> getViewgiohangByBillID(Integer billID);
+
+    List<Viewgiohang> getViewgiohangByUsername(String username);
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!doctype html>
 <html lang="en">
@@ -6,15 +7,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/resources/static/css/menu/style1.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Moon Dance">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rye">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Send Flowers">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title>Menu</title>
-
 </head>
 <body>
 <div class="bodywrap">
@@ -386,7 +386,7 @@
     })
     function redirectToBuyPage(productId) {
         // Tạo đường dẫn dựa trên productId
-        var redirectUrl = '/checkout/' + productId;
+        var redirectUrl = '/prebuy/' + productId;
 
         // Chuyển hướng trang
         window.location.href = redirectUrl;

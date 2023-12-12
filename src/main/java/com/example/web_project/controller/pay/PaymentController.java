@@ -1,4 +1,4 @@
-package com.example.web_project.controller;
+package com.example.web_project.controller.pay;
 
 import com.example.web_project.entities.Viewgiohang;
 import com.example.web_project.services.ViewgiohangService;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/payments")
+@RequestMapping("/api/v1/payments")
 @RequiredArgsConstructor
 public class PaymentController {
 
@@ -67,4 +67,11 @@ public class PaymentController {
         List<Viewgiohang> viewgiohangList = viewgiohangService.getViewgiohangByBillID(billID);
         return new ResponseEntity<>(viewgiohangList, HttpStatus.OK);
     }
+
+    @GetMapping("/viewgiohang/byUsername/{username}")
+    public ResponseEntity<List<Viewgiohang>> getViewgiohangByUsername(@PathVariable String username) {
+        List<Viewgiohang> viewgiohangList = viewgiohangService.getViewgiohangByUsername(username);
+        return new ResponseEntity<>(viewgiohangList, HttpStatus.OK);
+    }
+
 }
