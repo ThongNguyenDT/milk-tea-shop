@@ -176,7 +176,7 @@
                         <c:forEach var="product" items="${products}">
                             <c:if test="${product.category eq 'Tea'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.idProduct}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
@@ -199,7 +199,7 @@
                         <c:forEach var="product" items="${products}">
                             <c:if test="${product.category eq 'Tea'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.idProduct}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
@@ -223,7 +223,7 @@
                         <c:forEach var="product" items="${products}">
                             <c:if test="${product.category eq 'Coffee'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.idProduct}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
@@ -247,7 +247,7 @@
                         <c:forEach var="product" items="${products}">
                             <c:if test="${product.category eq 'Cake'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.idProduct}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
@@ -271,7 +271,7 @@
                         <c:forEach var="product" items="${products}">
                             <c:if test="${product.category eq 'Bread'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.idProduct}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
@@ -295,7 +295,7 @@
                         <c:forEach var="product" items="${products}">
                             <c:if test="${product.category eq 'Other'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.idProduct}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
@@ -386,7 +386,7 @@
     })
     function redirectToBuyPage(productId) {
         // Tạo đường dẫn dựa trên productId
-        var redirectUrl = '/checkout/' + productId;
+        var redirectUrl = '/prebuy/' + productId;
 
         // Chuyển hướng trang
         window.location.href = redirectUrl;
