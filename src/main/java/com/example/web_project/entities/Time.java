@@ -1,10 +1,10 @@
 package com.example.web_project.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
-
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -12,10 +12,9 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity(name = "Time")
-@Table(name = "time", schema = "WebProject")
+@Table(name = "time", schema = "test")
 public class Time {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTime", nullable = false)
     private Integer id;
 
@@ -24,11 +23,5 @@ public class Time {
 
     @Column(name = "Year")
     private Integer year;
-
-    @OneToMany(mappedBy = "idTime")
-    private Set<Cost> costs = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "idTime")
-    private Set<Earn> earns = new LinkedHashSet<>();
 
 }

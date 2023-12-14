@@ -42,20 +42,6 @@
                     <div class="card-body p-5 shadow-5 text-center">
                         <h2 class="fw-bold mb-5">Sign in</h2>
                         <form action="/alotra/login" method="post">
-                            <div class="text-center mb-3">
-                                <p>Sign in with:</p>
-
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-google"></i>
-                                </button>
-
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="fab fa-github"></i>
-                                </button>
-                            </div>
-
-                            <p class="text-center">or:</p>
-
                             <!-- UserName input -->
                             <div class="form-outline mb-4">
                                 <input type="text" id="username" name="username" class="form-control"/>

@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
 <div class="bodywrap">
     <header></header>
     <div class=" background1">
@@ -383,9 +384,9 @@
                                         Count</h1>
                                 </div>
                                 <div class="Countbor">
-                                    <input
-                                            style="border: 1px solid #00000062; border-radius: 10px; background: #d9d9d9; width: 350px; height: 45px; flex-shrink: 0; margin-left: 50px;margin-top:15px;"
-                                            type="text">
+                                    <input id="Countbor"
+                                           style="border: 1px solid #00000062; border-radius: 10px; background: #d9d9d9; width: 350px; height: 45px; flex-shrink: 0; margin-left: 50px;margin-top:15px;"
+                                           type="text">
                                 </div>
                                 <div class="Note" style="display: flex;">
                                     <h1
@@ -409,23 +410,12 @@
                                 </label>
                                     <span style="font-size: 25px; margin-left: -345px">0.00$</span>
                                 </div>
-                                <div class="linetotal"
-                                     style=" width: 400px; height: 1px; background-color: #000; margin-left: 20px; margin-top: 40px;">
-                                </div>
 
-                                <div class="Total" style="display: flex;">
-                                    <h1
-                                            style="font-family: Molengo, sans-serif; text-align: center;font-size: 35px; font-style: normal; font-weight: 400; line-height: normal; color: #000000; margin-left: 55px; margin-top:50px">
-                                        Total</h1>
-                                </div>
-                                <div class="Totalbox"
-                                     style="border: 1px solid #00000062; border-radius: 10px; background: #d9d9d9; width: 370px; height: 60px; flex-shrink: 0; margin-left: 50px;margin-top:15px; ">
-                                </div>
                                 <div>
                                     <button class="Orderbor"
                                             style="width: 184px; height: 48px; border-radius: 502px; border: none; background: rgba(2, 85, 34, 0.79); margin-left: 230px; margin-top:100px; flex-shrink: 0; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);"
                                             id="addToOrderButton"
-                                    onclick="addToOrder()">
+                                            onclick="addToOrder()">
 
                                         <h1 style="font-family:Mplus1p, sans-serif; font-size:22px; color:#ffffff">
                                             Add to Order
@@ -443,7 +433,10 @@
         </div>
     </div>
 </div>
-
+<script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
@@ -494,64 +487,48 @@
 </script>
 
 <script>
-    var sizeSvgElement = document.querySelector('.svgsize.active');
-    var addinSvgElement = document.querySelector('.svgaddin.active');
-    var foamSvgElement = document.querySelector('.svgfoam.active');
-    var toppingSvgElement = document.querySelector('.svgtopping.active');
-
-    var idSize = '1';
-    var idAddin = '1';
-    var idFoam = '0';
-    var idTopping = '0';
-
-    if (sizeSvgElement) idSize = sizeSvgElement.getAttribute('data-value');
-    if (addinSvgElement) idAddin = addinSvgElement.getAttribute('data-value');
-    if (foamSvgElement) idFoam = foamSvgElement.getAttribute('data-value');
-    if (toppingSvgElement) idTopping = toppingSvgElement.getAttribute('data-value');
-
-    var currentURL = window.location.href;
-    var urlParts = currentURL.split('/');
-    var idProduct = urlParts[urlParts.length - 1];
-    var count = parseInt(document.getElementById('Countbor').value);
-
-    function calculateTotalCost() {
-        $.ajax({
-            type: 'GET',
-            url: `/checkout/${productId}?idSize=${idSize}&idFoam=${idFoam}&idAddin=${idAddin}&idTopping=${idTopping}&idProduct=${idProduct}`,
-            success: function (data) {
-                // Cập nhật giá trị của textbox 'Totalbox'
-                $('#Totalbox').val(data * count);
-            },
-            error: function () {
-                console.error('There was a problem with the AJAX request.');
-            }
-        });
-    }
 
 
-    // Gọi hàm tính toán khi trang được tải xong
-    calculateTotalCost();
 
-    // Bắt sự kiện khi có thay đổi trong các ô chọn
-    $('.svgsize, .svgfoam, .svgaddin, .svgtopping').on('mousedown', function () {
-        calculateTotalCost();
-    });
 
-</script>
-<script>
+
+    // var currentURL = window.location.href;
+    // var urlParts = currentURL.split('/');
+
+    const idProduct = ${productId};
+
+
     function addToOrder() {
+
+        var sizeSvgElement = document.querySelector('.svgsize.active');
+        var addinSvgElement = document.querySelector('.svgaddin.active');
+        var foamSvgElement = document.querySelector('.svgfoam.active');
+        var toppingSvgElement = document.querySelector('.svgtopping.active');
+
+        let idSize = '1';
+        let idAddin = '1';
+        let idFoam = '0';
+        let idTopping = '0';
+
+        if (sizeSvgElement) idSize = sizeSvgElement.getAttribute('data-value');
+        if (addinSvgElement) idAddin = addinSvgElement.getAttribute('data-value');
+        if (foamSvgElement) idFoam = foamSvgElement.getAttribute('data-value');
+        if (toppingSvgElement) idTopping = toppingSvgElement.getAttribute('data-value');
+        let count = parseInt(document.getElementById('Countbor').value);
+
         // Gửi yêu cầu HTTP POST đến endpoint của controller SaveBill
         $.ajax({
             type: "POST",
-            url: "/saveBill/addToOrder",
-            success: function (data) {
-                // Sau khi lưu hóa đơn thành công, chuyển hướng đến "/addsuccess"
-                window.location.href = "/addsuccess";
+            url: "/addToOrder",
+            data: {
+                idProduct: idProduct,
+                count: count,
+                idSize: idSize,
+                idAddin: idAddin,
+                idFoam: idFoam,
+                idTopping: idTopping,
+
             },
-            error: function (error) {
-                // Xử lý lỗi nếu có
-                console.error("Error", error);
-            }
         });
     }
 </script>

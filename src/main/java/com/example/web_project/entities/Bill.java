@@ -31,6 +31,6 @@ public class Bill {
     private Set<Billinfo> billinfos = new LinkedHashSet<>();
 
     @Column(name = "isPaid")
-    private boolean paid;
+    private Boolean paid;
 
 }

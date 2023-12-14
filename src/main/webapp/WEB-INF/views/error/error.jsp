@@ -42,5 +42,10 @@
         <a href="/">Go To Homepage</a>
     </div>
 </div>
+<script>
+    if (window.location.search == '?continue') {
+        window.location.href = '/'
+    }
+</script>
 </body>
 </html>

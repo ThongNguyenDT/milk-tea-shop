@@ -21,8 +21,6 @@ public class PrebuyServiceImpl implements PrebuyService {
     @Autowired
     private BillInfoRepository billinfoRepository;
 
-    @Autowired
-    private ProductRepository productRepository;
 
     @Autowired
     private AccountRepository accountRepository;
@@ -36,20 +34,24 @@ public class PrebuyServiceImpl implements PrebuyService {
 
     @Override
     @Transactional
-    public void addToOrder(int idProduct, int count, int idSize, int idAddin, int idFoam, int idTopping, int idAccount) {
+    public void addToOrder(Product idProduct, int count, int idSize, int idAddin, int idFoam, int idTopping, int idAccount) {
 
+        System.out.println("Vao ham add to order");
         // Kiểm tra xem có tồn tại Bill chưa được thanh toán (paid = false) hay không
         Optional<Bill> bill = billRepository.findUnpaidBillByAccountId(idAccount).stream().findFirst();
 
         Bill existingBill = bill.orElse(null);
 
         if (existingBill != null) {
+            System.out.println("case existingBill");
             // Nếu có, sử dụng Bill hiện tại để tạo BillInfo mới
             createBillInfo(existingBill, idProduct, count, idSize,idAddin,idFoam,idTopping);
         } else {
+            System.out.println("case not existingBill");
             // Nếu không có, tạo mới một Bill và sử dụng nó để tạo BillInfo mới
             Bill newBill = new Bill();
-            Account account = accountRepository.findById(idAccount).orElse(null);
+            Integer accountId = idAccount;
+            Account account = accountRepository.findById(accountId).orElse(null);
             newBill.setIdAccount(account);
             newBill.setPaid(false); // Gán paid cho Bill mới
 
@@ -60,43 +62,26 @@ public class PrebuyServiceImpl implements PrebuyService {
         }
     }
 
-    private void createBillInfo(Bill bill, int idProduct, int count, int idSize, int idAddin, int idFoam, int idTopping) {
+    private void createBillInfo(Bill bill, Product idProduct, int count, int idSize, int idAddin, int idFoam, int idTopping) {
         // Tạo một Billinfo mới
         Billinfo billInfo = new Billinfo();
         billInfo.setBillID(bill);
-        // Truy xuất Product thông qua idProduct
-        Product product = productRepository.findById(idProduct).orElse(null);
-        billInfo.setProductID(product);
+
+        billInfo.setProductID(idProduct);
 
         // Đặt các thuộc tính khác
         billInfo.setCount(count);
 
-        Integer idDrinkType = findIDDrinkTypeBySizeAndAddinAndFoamAndTopping(idSize,idAddin,idFoam,idTopping);
-        Drinktype drinkcost = drinktypeRepository.findById(idDrinkType).orElse(null);
-        billInfo.setDrinkTypeID(drinkcost);
+        Drinktype idDrinkType = drinktypeRepository.getDrinkTypeID(idSize, idAddin, idFoam, idTopping);
+        billInfo.setDrinkTypeID(idDrinkType);
 
         // Lưu Billinfo để tạo ra idBillInfo
         billinfoRepository.save(billInfo);
     }
 
     @Override
-    public Integer findIDDrinkTypeBySizeAndAddinAndFoamAndTopping(int idSize, int idAddin, int idFoam, int idTopping) {
-        return drinkCostRepository.findIDDrinkTypeByIdSizeAndIdAddinAndIdFoamAndIdTopping(idSize, idAddin, idFoam, idTopping);
+    public Drinktype getDrinkTypeID(int idSize, int idAddin, int idFoam, int idTopping) {
+        return drinktypeRepository.getDrinkTypeID(idSize, idAddin, idFoam, idTopping);
     }
 
-    @Override
-    public Double calculateTotalCost(int idSize, int idFoam, int idAddin, int idTopping, int idProduct) {
-        // Lấy giá trị addcost từ bảng DrinkCost
-        double addCost = drinkCostRepository.findTotalCostByIdSizeAndIdFoamAndIdAddinAndIdTopping(idSize, idFoam, idAddin, idTopping);
-        // Lấy giá trị basecost từ bảng Product
-        Integer baseCost = 0;
-
-        AtomicReference<Integer> cost = null;
-        productRepository.findById(idProduct).ifPresent(p -> cost.set(p.getCost()));
-        baseCost = cost.get();
-//        double baseCost = productRepository.findCost(idProduct);
-
-        // Tính toán totalCost
-        return (double) baseCost + addCost;
-    }
 }

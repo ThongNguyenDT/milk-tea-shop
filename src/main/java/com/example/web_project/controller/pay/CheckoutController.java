@@ -33,4 +33,9 @@ public class CheckoutController {
         model.addAttribute("cartInformation", cartInformation);
         return "checkout/checkout";
     }
+
+    @GetMapping({"/thanh-toan-thanh-cong-view", "/alotra/success"})
+    public String success() {
+        return "checkout/success";
+    }
 }

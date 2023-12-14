@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -116,7 +117,7 @@
 
                     <script>
                         function showCartInformation(username) {
-                            fetch('/api/v1/payments/viewgiohang/${authenticationUser.getId()}')
+                            fetch('/viewgiohang/byUsername/' + username)
                                 .then(response => {
                                     if (!response.ok) {
                                         throw new Error('Network response was not ok');
@@ -129,43 +130,44 @@
                                     const cartInformationContainer = document.getElementById("cartInformationContainer");
                                     cartInformationContainer.innerHTML = "";
 
-                                    cartInformation.forEach(item => {
-                                        const cartItemDiv = document.createElement("div");
-                                        cartItemDiv.classList.add("oder1", "mt-4", "d-flex", "align-items-center");
+                                    if (cartInformation.length > 0) {
+                                        cartInformation.forEach(item => {
+                                            const cartItemDiv = document.createElement("div");
+                                            cartItemDiv.classList.add("oder1", "mt-4", "d-flex", "align-items-center");
 
-                                        const checkbox = document.createElement("input");
-                                        checkbox.type = "checkbox";
-                                        checkbox.classList.add("item-checkbox");
-                                        cartItemDiv.appendChild(checkbox);
+                                            const checkbox = document.createElement("input");
+                                            checkbox.type = "checkbox";
+                                            checkbox.classList.add("item-checkbox");
+                                            cartItemDiv.appendChild(checkbox);
 
-                                        const image = document.createElement("img");
-                                        image.classList.add("oder1-child");
-                                        image.alt = "";
-                                        image.src = item.avatar;
-                                        cartItemDiv.appendChild(image);
+                                            const productInfoDiv = document.createElement("div");
+                                            productInfoDiv.classList.add("matcha-milk-tea-m-parent", "mx-2");
 
-                                        const productInfoDiv = document.createElement("div");
-                                        productInfoDiv.classList.add("matcha-milk-tea-m-parent", "mx-2");
+                                            const productNameDiv = document.createElement("div");
+                                            productNameDiv.classList.add("product-name");
+                                            productNameDiv.innerText = item.productName;
+                                            productInfoDiv.appendChild(productNameDiv);
 
-                                        const productNameDiv = document.createElement("div");
-                                        productNameDiv.classList.add("product-name");
-                                        productNameDiv.innerText = item.name;
-                                        productInfoDiv.appendChild(productNameDiv);
+                                            const priceDiv = document.createElement("div");
+                                            priceDiv.classList.add("price");
+                                            priceDiv.innerText = `${item.productCost} VNĐ x ${item.count}`;
+                                            productInfoDiv.appendChild(priceDiv);
 
-                                        const priceDiv = document.createElement("div");
-                                        priceDiv.classList.add("price");
-                                        priceDiv.innerText = `${item.cost} VNĐ x ${item.quantity}`;
-                                        productInfoDiv.appendChild(priceDiv);
+                                            cartItemDiv.appendChild(productInfoDiv);
 
-                                        cartItemDiv.appendChild(productInfoDiv);
+                                            const totalDiv = document.createElement("div");
+                                            totalDiv.classList.add("total");
+                                            totalDiv.innerText = `${item.totalCost} VNĐ`;
+                                            cartItemDiv.appendChild(totalDiv);
 
-                                        const totalDiv = document.createElement("div");
-                                        totalDiv.classList.add("total");
-                                        totalDiv.innerText = `${item.cost * item.quantity} VNĐ`;
-                                        cartItemDiv.appendChild(totalDiv);
-
-                                        cartInformationContainer.appendChild(cartItemDiv);
-                                    });
+                                            cartInformationContainer.appendChild(cartItemDiv);
+                                        });
+                                    } else {
+                                        // Hiển thị thông báo khi giỏ hàng trống
+                                        const emptyCartMessage = document.createElement("div");
+                                        emptyCartMessage.innerText = "Giỏ hàng của bạn trống.";
+                                        cartInformationContainer.appendChild(emptyCartMessage);
+                                    }
                                 })
                                 .catch(error => console.error('Lỗi khi lấy dữ liệu giỏ hàng:', error));
                         }
@@ -174,7 +176,6 @@
                         const usernameFromPath = pathArray[pathArray.length - 1];
                         showCartInformation(usernameFromPath);
                     </script>
-
 
                     <div class="payment my-1">
                         <div class="merchandise-subtotal-parent d-flex justify-content-between align-items-center">
@@ -214,11 +215,11 @@
                             var cashChecked = document.getElementById("cash").checked;
 
                             if (visaChecked) {
-                                window.location.href = "vnpay.html";
+                                window.location.href = "/pay?totalPayment=${giatien}";
                             } else if (atmChecked) {
-                                window.location.href = "vnpay.html";
+                                window.location.href = "/pay?totalPayment=${giatien}";
                             } else if (cashChecked) {
-                                window.location.href = "success.jsp";
+                                window.location.href = "/alotra/success";
                             }
                         }
                     </script>

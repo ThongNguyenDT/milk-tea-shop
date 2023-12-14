@@ -1,6 +1,11 @@
 package com.example.web_project.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.Immutable;
 
@@ -14,18 +19,18 @@ import org.hibernate.annotations.Immutable;
 @Setter
 @Entity(name = "Viewgiohang")
 @Immutable
-@Table(name = "viewgiohang", schema = "WebProject")
+@Table(name = "viewgiohang", schema = "test")
 public class Viewgiohang {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Column(name = "idBillInfo", nullable = false)
+    private Integer idBillInfo;
+
     @Column(name = "idAccount")
     private Integer idAccount;
 
     @Column(name = "idBill")
     private Integer idBill;
-
-    @Column(name = "idBillInfo", nullable = false)
-    private Integer idBillInfo;
 
     @Column(name = "BillID")
     private Integer billID;
@@ -42,16 +47,19 @@ public class Viewgiohang {
     @Column(name = "idProduct")
     private Integer idProduct;
 
+    @Size(max = 45)
     @Column(name = "Name", length = 45)
     private String name;
 
+    @Size(max = 2000)
     @Column(name = "Description", length = 2000)
     private String description;
 
     @Column(name = "Cost")
     private Integer cost;
 
-    @Column(name = "Avatar", length = 45)
+    @Size(max = 1000)
+    @Column(name = "Avatar", length = 1000)
     private String avatar;
 
 }
