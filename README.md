@@ -40,3 +40,10 @@ Nếu bạn gặp bất kỳ vấn đề nào hoặc có ý kiến đóng góp, 
 - Nguyễn Dương Tiến Thông [(ThongNguyenDT)](https://github.com/ThongNguyenDT)
 - Trần Xuân Thanh Thiện [(TXTThien)](https://github.com/TXTThien)
 - Huỳnh Thiện Thọ [(ThienTho123)](https://github.com/ThienTho123)
+
+  ## Bảng phân công
+| TT | Tên Sinh Viên | Mô Tả Công Việc |
+| -- | -------------- | --------------- |
+| 1 | Nguyễn Dương Tiến Thông | - Setup Spring boot.<br>- Setup Spring Security.<br>- Setup JWT.<br>- Sitemesh decorator.<br>- Admin API, báo cáo tài chính.<br>- API CRUD Customer.<br>- API CRUD Product.<br>- API Authentication.<br>- Xử lí backend đăng kí, đăng nhập. |
+| 2 | Trần Xuân Thanh Thiện | - Thiết kế giao diện menu.<br>- Thiết kế giao diện chi tiết đơn hàng.<br>- Thiết kế giao diện đăng ký, đăng nhập.<br>- Xử lí backend menu.<br>- Xử lí backend chi tiết đơn hàng. |
+| 3 | Huỳnh Thiện Thọ | - Thiết kế giao diện thanh toán.<br>- Xử lí backend thanh toán.<br>- Xử lí giỏ hàng.<br>- Kiểm tra và sửa lỗi.<br>- API VNPay. |
