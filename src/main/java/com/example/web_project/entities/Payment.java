@@ -26,8 +26,9 @@ public class Payment {
     @Column(name = "amount")
     private Double amount;
 
-    @Column(name = "paymentDate")
+    @Column(name = "paymentDate", columnDefinition = "DATETIME")
     private Date paymentDate;
+
 
     // Getters and setters
 }
