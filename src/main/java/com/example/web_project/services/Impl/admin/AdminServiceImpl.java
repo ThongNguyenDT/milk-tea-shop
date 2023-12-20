@@ -30,7 +30,7 @@ public class AdminServiceImpl implements AdminService {
         var check = viewMonthRepository.findAll();
         Viewmonth data = new Viewmonth();
         if (!check.isEmpty())
-            data = check.getFirst();
+            data = check.get(0);
         return AdminTotalResponse.builder()
                 .Earn(String.valueOf(data.getEarn()))
                 .Customers(String.valueOf(data.getCustomers()))
