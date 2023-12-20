@@ -20,14 +20,15 @@ public class VnpayController {
 
     @GetMapping("/pay")
     public String getPay(@RequestParam("totalPayment") String totalPayment) throws UnsupportedEncodingException {
-        long amount = Long.parseLong(totalPayment) * 100;
-
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String orderType = "other";
+        long amount = Long.parseLong(totalPayment)*100;
+        String bankCode = "NCB";
 
         String vnp_TxnRef = ConfigVnpay.getRandomNumber(8);
         String vnp_IpAddr = "127.0.0.1";
+
         String vnp_TmnCode = ConfigVnpay.vnp_TmnCode;
 
         Map<String, String> vnp_Params = new HashMap<>();
@@ -35,14 +36,14 @@ public class VnpayController {
         vnp_Params.put("vnp_Command", vnp_Command);
         vnp_Params.put("vnp_TmnCode", vnp_TmnCode);
         vnp_Params.put("vnp_Amount", String.valueOf(amount));
-
+        vnp_Params.put("vnp_CurrCode", "VND");
 
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
         vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
         vnp_Params.put("vnp_OrderType", orderType);
 
         vnp_Params.put("vnp_Locale", "vn");
-        vnp_Params.put("vnp_ReturnUrl", "http://localhost:8080/thanh-toan-thanh-cong-view");
+        vnp_Params.put("vnp_ReturnUrl", ConfigVnpay.vnp_ReturnUrl);
         vnp_Params.put("vnp_IpAddr", vnp_IpAddr);
 
         Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
@@ -86,7 +87,7 @@ public class VnpayController {
     }
     @RequestMapping("/thanh-toan-thanh-cong-view")
     public ModelAndView thanhToanThanhCong(@RequestParam Map<String, String> params) {
-        ModelAndView modelAndView = new ModelAndView("thanh-toan-thanh-cong-view");
+        ModelAndView modelAndView = new ModelAndView("");
 
         // Trong phương thức thanhToanThanhCong
         modelAndView.addObject("vnp_Params", params);

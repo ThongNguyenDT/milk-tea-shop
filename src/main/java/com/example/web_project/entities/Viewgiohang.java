@@ -1,6 +1,12 @@
 package com.example.web_project.entities;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.Immutable;
 
@@ -12,22 +18,19 @@ import org.hibernate.annotations.Immutable;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "Viewgiohang")
 @Immutable
-@Table(name = "viewgiohang", schema = "WebProject")
+@Entity(name = "Viewgiohang")
+@Table(name = "Viewgiohang", schema = "test")
 public class Viewgiohang {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idAccount")
+    @NotNull
+    @Column(name = "id_bill_info", nullable = false)
+    private Integer id_bill_info;
+
+    @Column(name = "id_Account")
     private Integer idAccount;
 
-    @Column(name = "idBill")
-    private Integer idBill;
-
-    @Column(name = "idBillInfo", nullable = false)
-    private Integer idBillInfo;
-
-    @Column(name = "BillID")
+    @Column(name = "id_Bill")
     private Integer billID;
 
     @Column(name = "ProductID")
@@ -36,22 +39,32 @@ public class Viewgiohang {
     @Column(name = "Count")
     private Integer count;
 
-    @Column(name = "DrinkTypeID")
-    private Integer drinkTypeID;
+    @Column(name = "drink_typeid")
+    private Integer drink_typeid;
 
-    @Column(name = "idProduct")
-    private Integer idProduct;
+    @Size(max = 45)
+    @Column(name = "username",length = 45)
+    private String username;
 
-    @Column(name = "Name", length = 45)
-    private String name;
+    @Column(name = "product_cost")
+    private Integer product_cost;
 
-    @Column(name = "Description", length = 2000)
+    @Size(max = 1000)
+    @Column(name = "product_name", length = 1000)
+    private String product_name;
+
+    @Size(max = 1000)
+    @Column(name = "description", length = 1000)
     private String description;
 
-    @Column(name = "Cost")
-    private Integer cost;
+    @Size(max = 2000)
+    @Column(name = "Avatar", length =2000)
+    private String Avatar;
 
-    @Column(name = "Avatar", length = 45)
-    private String avatar;
+    @Column(name = "drink_type_cost")
+    private Integer drink_type_cost;
+
+    @Column(name = "total_cost")
+    private Integer total_cost;
 
 }

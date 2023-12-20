@@ -1,10 +1,10 @@
 package com.example.web_project.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
-
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -12,20 +12,17 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity(name = "Size")
-@Table(name = "size", schema = "WebProject")
+@Table(name = "size", schema = "test")
 public class Size {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idSize", nullable = false)
     private Integer id;
 
+    @jakarta.validation.constraints.Size(max = 45)
     @Column(name = "Size", length = 45)
     private String size;
 
     @Column(name = "Cost")
     private Integer cost;
-
-    @OneToMany(mappedBy = "sizeID")
-    private Set<Drinktype> drinktypes = new LinkedHashSet<>();
 
 }

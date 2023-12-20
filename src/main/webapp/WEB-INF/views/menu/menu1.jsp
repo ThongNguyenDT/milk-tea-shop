@@ -173,10 +173,10 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <c:forEach var="product" items="${products}">
+                        <c:forEach var="product" items="${teaProducts}">
                             <c:if test="${product.category eq 'Tea'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.id}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
@@ -196,11 +196,11 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <c:forEach var="product" items="${products}">
-                            <c:if test="${product.category eq 'Tea'}">
-                                <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
-                                    <span><c:out value="${product.cost}"/> $</span>
+                        <c:forEach var="product" items="${milkTeaProducts}">
+                            <c:if test="${product.category eq 'Milk Tea'}">
+                                <li class="drink_list" >
+                                    <a  href="/prebuy/${product.id}" >${product.name}</a>
+                                    <span ><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
                         </c:forEach>
@@ -220,10 +220,10 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <c:forEach var="product" items="${products}">
+                        <c:forEach var="product" items="${coffeeProducts}">
                             <c:if test="${product.category eq 'Coffee'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.id}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
@@ -244,10 +244,10 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <c:forEach var="product" items="${products}">
+                        <c:forEach var="product" items="${cakeProducts}">
                             <c:if test="${product.category eq 'Cake'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.id}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
@@ -268,10 +268,10 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <c:forEach var="product" items="${products}">
+                        <c:forEach var="product" items="${breadProducts}">
                             <c:if test="${product.category eq 'Bread'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.id}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>
@@ -292,10 +292,10 @@
                     <hr class="line">
 
                     <ul class="listtea">
-                        <c:forEach var="product" items="${products}">
+                        <c:forEach var="product" items="${otherProducts}">
                             <c:if test="${product.category eq 'Other'}">
                                 <li class="drink_list">
-                                    <a href="/checkout/${product.idProduct}">${product.name}</a>
+                                    <a href="/prebuy/${product.id}">${product.name}</a>
                                     <span><c:out value="${product.cost}"/> $</span>
                                 </li>
                             </c:if>

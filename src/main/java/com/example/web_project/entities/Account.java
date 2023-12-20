@@ -2,6 +2,7 @@ package com.example.web_project.entities;
 
 import com.example.web_project.entities.enums.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -49,9 +50,11 @@ public class Account implements UserDetails {
     @Column(name = "Email", length = 50)
     private String email;
 
-    @OneToMany(mappedBy = "idAccount")
+    @OneToMany(mappedBy = "idAccount", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
+    @JsonManagedReference
     private Set<Bill> bills = new LinkedHashSet<>();
+
 
     @Override
     @JsonIgnore

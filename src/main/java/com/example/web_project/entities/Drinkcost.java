@@ -1,11 +1,12 @@
 package com.example.web_project.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.Immutable;
-import org.hibernate.proxy.HibernateProxy;
-
-import java.util.Objects;
 
 /**
  * Mapping for DB view
@@ -17,10 +18,10 @@ import java.util.Objects;
 @Setter
 @Entity(name = "Drinkcost")
 @Immutable
-@Table(name = "drinkcost", schema = "WebProject")
+@Table(name = "drinkcost", schema = "test")
 public class Drinkcost {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     @Column(name = "idDrinkType", nullable = false)
     private Integer idDrinkType;
 
@@ -47,5 +48,6 @@ public class Drinkcost {
 
     @Column(name = "TotalCost")
     private Long totalCost;
+
 
 }

@@ -147,7 +147,7 @@ header.innerHTML = `
                 <li>
                     <button type="button" class="icon_btn cart_btn m-lg-1 " onclick="window.location.href = '/alotra/checkout'">
                         <i class=" icon fa-solid fa-cart-shopping"></i>
-                        <small class=" cart_counter">2</small>
+
                     </button>
                 </li>
                 ${auth(jsonUser)}

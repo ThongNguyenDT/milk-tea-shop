@@ -1,5 +1,6 @@
 package com.example.web_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -24,13 +25,15 @@ public class Bill {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idAccount")
     @ToString.Exclude
+    @JsonBackReference
     private Account idAccount;
 
-    @OneToMany(mappedBy = "billID")
+    @OneToMany(mappedBy = "billID", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     private Set<Billinfo> billinfos = new LinkedHashSet<>();
 
+
     @Column(name = "isPaid")
-    private boolean paid;
+    private Boolean paid;
 
 }

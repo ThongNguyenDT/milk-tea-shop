@@ -1,26 +1,22 @@
 package com.example.web_project.controller.menu;
 
 import com.example.web_project.entities.Product;
-import com.example.web_project.repository.DrinkcostRepository;
-import com.example.web_project.repository.ProductRepository;
 import com.example.web_project.services.PrebuyService;
 import com.example.web_project.services.ProductService;
 import com.example.web_project.services.securityService.AuthService;
+import com.example.web_project.services.securityService.GetIDAccountFromAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
 @RequiredArgsConstructor
 public class PrebuyController {
     private final AuthService authService;
     private final ProductService productService;
-    private final DrinkcostRepository drinkCostRepository;
-    private final ProductRepository productRepository;
     private final PrebuyService prebuyService;
+    private final GetIDAccountFromAuthService getIDAccountService; // Thêm vào đây
 
     @GetMapping("/prebuy/{productId}")
     public String prebuy(@PathVariable Integer productId, Model model) {
@@ -30,49 +26,21 @@ public class PrebuyController {
         return "user/prebuy";
     }
 
-    @GetMapping("/calculateTotalCost/{productId}")
-    public String calculateTotalCost(
-            @RequestParam("idSize") int idSize,
-            @RequestParam("idFoam") int idFoam,
-            @RequestParam("idAddin") int idAddin,
-            @RequestParam("idTopping") int idTopping,
-            @RequestParam("idProduct") int idProduct,
-            Model model) {
-
-        // Lấy giá trị addcost từ bảng DrinkCost
-        double addCost = drinkCostRepository.findTotalCostByIdSizeAndIdFoamAndIdAddinAndIdTopping(idSize, idFoam, idAddin, idTopping);
-
-        // Lấy giá trị basecost từ bảng Product
-        Integer baseCost = 0;
-
-        AtomicReference<Integer> cost = null;
-        productRepository.findById(idProduct).ifPresent(p -> cost.set(p.getCost()));
-        baseCost = cost.get();
-
-        // Tính toán totalCost
-        double totalCost = ((double) baseCost + addCost);
-
-        // Thêm thông tin tính toán vào Model
-        model.addAttribute("totalCost", totalCost);
-
-        // Gọi lại phương thức checkout để render lại trang với thông tin tính toán
-        return prebuy(idProduct, model);
-    }
-
     @PostMapping("/addToOrder")
-    public String addToOrder(@RequestParam("idProduct") int idProduct,
-                             @RequestParam("count") int count,
-                             @RequestParam("idSize") int idSize,
-                             @RequestParam("idAddin") int idAddin,
-                             @RequestParam("idFoam") int idFoam,
-                             @RequestParam("idTopping") int idTopping,
-                             @RequestParam("idAccount") int idAccount,
-                             Model model) {
+    public String addToOrder(
+            @RequestParam("idProduct") Product idProduct,
+            @RequestParam("count") int count,
+            @RequestParam("idSize") int idSize,
+            @RequestParam("idAddin") int idAddin,
+            @RequestParam("idFoam") int idFoam,
+            @RequestParam("idTopping") int idTopping,
+            Model model) {
+        int idAccount = getIDAccountService.common(model);
 
         // Gọi phương thức addToOrder trong service để thêm sản phẩm vào hóa đơn
         prebuyService.addToOrder(idProduct, count, idSize, idAddin, idFoam, idTopping, idAccount);
 
         // Redirect hoặc forward đến trang khác nếu cần
-        return "redirect:/addsuccess";
+        return "menu/menu1";
     }
 }

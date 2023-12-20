@@ -71,7 +71,6 @@ public class PaymentController {
     @GetMapping("/viewgiohang/byUsername/{username}")
     public ResponseEntity<List<Viewgiohang>> getViewgiohangByUsername(@PathVariable String username) {
         List<Viewgiohang> viewgiohangList = viewgiohangService.getViewgiohangByUsername(username);
-        return new ResponseEntity<>(viewgiohangList, HttpStatus.OK);
+        return ResponseEntity.ok().body(viewgiohangList);
     }
-
 }

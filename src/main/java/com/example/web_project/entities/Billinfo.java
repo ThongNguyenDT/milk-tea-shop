@@ -1,10 +1,8 @@
 package com.example.web_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.proxy.HibernateProxy;
-
-import java.util.Objects;
 
 @Builder
 @AllArgsConstructor
@@ -12,11 +10,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity(name = "Billinfo")
-@Table(name = "billinfo", schema = "WebProject", indexes = {
-        @Index(name = "BillID_idx", columnList = "BillID"),
-        @Index(name = "ProductID_idx", columnList = "ProductID"),
-        @Index(name = "DrinkTypeID_idx", columnList = "DrinkTypeID")
-})
+@Table(name = "billinfo", schema = "test")
 public class Billinfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +20,12 @@ public class Billinfo {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BillID")
     @ToString.Exclude
+    @JsonBackReference
     private Bill billID;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ProductID")
-    @ToString.Exclude
+    @JsonBackReference
     private Product productID;
 
     @Column(name = "Count")
@@ -38,7 +33,15 @@ public class Billinfo {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DrinkTypeID")
-    @ToString.Exclude
+    @JsonBackReference
     private Drinktype drinkTypeID;
 
+    // Constructors, getters, and setters...
+
+    // Ensure you set the associated entities before saving
+    public void setAssociatedEntities(Bill bill, Product product, Drinktype drinktype) {
+        this.billID = bill;
+        this.productID = product;
+        this.drinkTypeID = drinktype;
+    }
 }

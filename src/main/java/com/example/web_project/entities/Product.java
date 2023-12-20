@@ -1,10 +1,12 @@
 package com.example.web_project.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
-
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -12,26 +14,30 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity(name = "Product")
-@Table(name = "product", schema = "WebProject")
+@Table(name = "product", schema = "test")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idProduct", nullable = false)
     private Integer id;
 
+    @Size(max = 45)
     @Column(name = "Name", length = 45)
     private String name;
 
+    @Size(max = 2000)
     @Column(name = "Description", length = 2000)
     private String description;
 
     @Column(name = "Cost")
     private Integer cost;
 
-    @Column(name = "Avatar", length = 45)
+    @Size(max = 1000)
+    @Column(name = "Avatar", length = 1000)
     private String avatar;
 
-    @OneToMany(mappedBy = "productID")
-    private Set<Billinfo> billinfos = new LinkedHashSet<>();
+    @Size(max = 45)
+    @NotNull
+    @Column(name = "Category", nullable = false, length = 45)
+    private String category;
 
 }

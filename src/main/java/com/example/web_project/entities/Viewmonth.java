@@ -19,17 +19,16 @@ import java.math.BigDecimal;
 @Setter
 @Entity(name = "Viewmonth")
 @Immutable
-@Table(name = "viewmonth", schema = "WebProject")
+@Table(name = "viewmonth", schema = "test")
 public class Viewmonth {
+    @Id
+    @Column(name = "Earn", precision = 52)
+    private BigDecimal earn;
 
     @Column(name = "Customers", precision = 32)
     private BigDecimal customers;
 
     @Column(name = "Products", precision = 32)
     private BigDecimal products;
-
-    @Id
-    @Column(name = "Earn", precision = 52)
-    private BigDecimal earn;
 
 }

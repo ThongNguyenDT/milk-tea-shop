@@ -171,6 +171,9 @@
     var error${errorKey} = document.createElement("span");
     error${errorKey}.style.cssText = "color:red; width: 100%; height: 25px; display: block; border-radius: 3px; margin-bottom:5px";
     error${errorKey}.innerText = "${log.get('errors').get(errorKey)}";
+    <c:if test="${log.get('errors').get(errorKey) == null}">
+    error${errorKey}.innerText = "${log.get('errors').get(errorKey)}";
+    </c:if>
     e_${errorKey}.parentNode.after(error${errorKey});
     e_${errorKey}.parentNode.style.setProperty("margin-bottom", "0px", "important");
     </c:forEach>

@@ -62,8 +62,7 @@ public class ViewgiohangServiceImpl implements ViewgiohangService {
     // Các phương thức truy vấn khác nếu cần
     @Override
     public List<Viewgiohang> getViewgiohangByUsername(String username) {
-        AtomicInteger id = new AtomicInteger();
-        accountRepository.findByUsername(username).ifPresent(account -> id.set(account.getId()));
-        return viewgiohangRepository.findByIdAccount(id.get());
+
+        return viewgiohangRepository.getViewgiohangByUsername(username);
     }
 }

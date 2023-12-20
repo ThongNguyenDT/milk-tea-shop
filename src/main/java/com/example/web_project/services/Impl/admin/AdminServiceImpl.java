@@ -45,7 +45,7 @@ public class AdminServiceImpl implements AdminService {
         return viewbudgets.stream()
                 .map(viewbudget -> {
                     return AdminMonthlyRevenueResponse.builder()
-                            .Total(String.valueOf(viewbudget.getTotal()))
+                            .Total(String.valueOf(viewbudget.getEarn()))
                             .Month(String.valueOf(viewbudget.getMonth()))
                             .Year(String.valueOf(viewbudget.getYear()))
                             .build();
@@ -64,7 +64,7 @@ public class AdminServiceImpl implements AdminService {
 
         return viewbudgets.stream()
                 .map(viewbudget -> {
-                    double percentage = (viewbudget.getTotal() / (double) total) * 100;
+                    double percentage = (viewbudget.getEarn() / (double) total) * 100;
                     return new AdminFourYearPerResponse(String.valueOf(percentage), String.valueOf(viewbudget.getYear()));
                 })
                 .toList();

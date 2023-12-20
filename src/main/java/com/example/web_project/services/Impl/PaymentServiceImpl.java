@@ -35,7 +35,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public Payment makePayment(Integer billId, Double amount) {
         Bill bill = billService.findById(billId);
-        if (bill == null || bill.isPaid()) {
+        if (bill == null || bill.getPaid()) {
             // Handle invalid bill or already paid
             return null;
         }

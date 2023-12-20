@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -11,6 +13,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tienne:wght@700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ABeeZee:wght@400&display=swap">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
 </head>
 <body>
 <div class="bodywrap">
@@ -102,93 +107,73 @@
                         <div class="cart-information d-flex align-items-center flex-column center">Cart information
                         </div>
                         <div class="cart d-flex flex-nowrap">
-                            <a href="trangmuahang.html" style="display: flex; align-items: center;">
-            <span class="cart-icon">
-                <img src="/resources/static/assets/checkout/cart.png" alt="Cart Image">
-            </span>
+                                    <span class="cart-icon">
+                                        <img src="/resources/static/assets/checkout/cart.png" alt="Cart Image">
+                                    </span>
                             </a>
-                            <div id="cartItemCount" class="cart-count bg-danger text-white ms-1">0</div>
+                            <c:set var="totalItems" value="${fn:length(Viewgiohang)}"/>
+                            <div class="cart-count bg-danger text-white ms-1">
+                                <span id="cartItemCountValue"><c:out value="${totalItems}"/></span>
+                            </div>
                         </div>
                         <div class="oder" id="cartInformationContainer">
-                            <!-- Nơi để hiển thị thông tin giỏ hàng -->
+                            <c:if test="${not empty Viewgiohang}">
+
+
+                                <c:forEach var="item" items="${Viewgiohang}">
+                                    <div class="order1 mt-4 d-flex align-items-center">
+                                        <input type="checkbox" class="item-checkbox"
+                                               data-total-cost="${item.total_cost * 1000}"/>
+
+                                        <div class="avatar-container">
+                                            <img src="${item.avatar}" alt="Avatar" class="avatar2">
+                                        </div>
+
+                                        <div class="matcha-milk-tea-m-parent mx-2">
+                                            <div class="product-name">
+                                                <c:out value="${item.product_name}"/>
+                                            </div>
+
+                                            <div class="price">
+                                                <c:out value="${item.product_cost * 1000} VNĐ x ${item.count}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="total" style="margin-left: 50px">
+                                            <c:out value="${item.total_cost * 1000} VNĐ"/>
+                                        </div>
+                                        <button class="delete-button" data-billinfo-id="${item.id_bill_info}" onclick="deleteBillinfo(this)">Delete</button>
+                                    </div>
+                                </c:forEach>
+
+                            </c:if>
+
+                            <c:if test="${empty Viewgiohang}">
+                                <div>
+                                    <div>Giỏ hàng của bạn trống.</div>
+                                </div>
+                            </c:if>
                         </div>
                     </div>
 
-                    <script>
-                        function showCartInformation(username) {
-                            fetch('/api/v1/payments/viewgiohang/${authenticationUser.getId()}')
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error('Network response was not ok');
-                                    }
-                                    return response.json();
-                                })
-                                .then(cartInformation => {
-                                    document.getElementById("cartItemCount").innerText = cartInformation.length;
-
-                                    const cartInformationContainer = document.getElementById("cartInformationContainer");
-                                    cartInformationContainer.innerHTML = "";
-
-                                    cartInformation.forEach(item => {
-                                        const cartItemDiv = document.createElement("div");
-                                        cartItemDiv.classList.add("oder1", "mt-4", "d-flex", "align-items-center");
-
-                                        const checkbox = document.createElement("input");
-                                        checkbox.type = "checkbox";
-                                        checkbox.classList.add("item-checkbox");
-                                        cartItemDiv.appendChild(checkbox);
-
-                                        const image = document.createElement("img");
-                                        image.classList.add("oder1-child");
-                                        image.alt = "";
-                                        image.src = item.avatar;
-                                        cartItemDiv.appendChild(image);
-
-                                        const productInfoDiv = document.createElement("div");
-                                        productInfoDiv.classList.add("matcha-milk-tea-m-parent", "mx-2");
-
-                                        const productNameDiv = document.createElement("div");
-                                        productNameDiv.classList.add("product-name");
-                                        productNameDiv.innerText = item.name;
-                                        productInfoDiv.appendChild(productNameDiv);
-
-                                        const priceDiv = document.createElement("div");
-                                        priceDiv.classList.add("price");
-                                        priceDiv.innerText = `${item.cost} VNĐ x ${item.quantity}`;
-                                        productInfoDiv.appendChild(priceDiv);
-
-                                        cartItemDiv.appendChild(productInfoDiv);
-
-                                        const totalDiv = document.createElement("div");
-                                        totalDiv.classList.add("total");
-                                        totalDiv.innerText = `${item.cost * item.quantity} VNĐ`;
-                                        cartItemDiv.appendChild(totalDiv);
-
-                                        cartInformationContainer.appendChild(cartItemDiv);
-                                    });
-                                })
-                                .catch(error => console.error('Lỗi khi lấy dữ liệu giỏ hàng:', error));
-                        }
-
-                        const pathArray = window.location.pathname.split('/');
-                        const usernameFromPath = pathArray[pathArray.length - 1];
-                        showCartInformation(usernameFromPath);
-                    </script>
-
-
                     <div class="payment my-1">
+                        <!-- Merchandise Subtotal -->
                         <div class="merchandise-subtotal-parent d-flex justify-content-between align-items-center">
                             <div class="merchandise-subtotal">
                                 <p class="merchandise-subtotal1">Merchandise Subtotal:</p>
                             </div>
                             <div class="vn4">
                                 <c:set var="merchandiseSubtotal" value="0"/>
-                                <c:forEach var="item" items="${cartInformation}">
-                                    <c:set var="merchandiseSubtotal" value="${merchandiseSubtotal + item.cost}"/>
+                                <c:forEach var="item" items="${Viewgiohang}">
+                                    <c:set var="merchandiseSubtotal"
+                                           value="${merchandiseSubtotal + item.total_cost * 1000}"/>
                                 </c:forEach>
-                                <p class="merchandise-subtotal1">${merchandiseSubtotal} VNĐ</p>
+                                <p id="merchandiseSubtotal" class="merchandise-subtotal1">${merchandiseSubtotal} VNĐ</p>
                             </div>
                         </div>
+
+
+                        <!-- Shipping Total -->
                         <div class="merchandise-subtotal-parent d-flex justify-content-between align-items-center">
                             <div class="merchandise-subtotal">
                                 <p class="merchandise-subtotal1">Shipping Total:</p>
@@ -197,16 +182,19 @@
                                 <p class="merchandise-subtotal1">30.000 VNĐ</p>
                             </div>
                         </div>
+
+                        <!-- Total Payment -->
                         <div class="total-payment-parent d-flex justify-content-between align-items-center">
                             <div class="merchandise-subtotal">
                                 <p class="merchandise-subtotal1">Total Payment:</p>
                             </div>
                             <div class="vn8 text-danger">
                                 <c:set var="totalPayment" value="${merchandiseSubtotal + 30000}"/>
-                                <p class="merchandise-subtotal1">${totalPayment} VNĐ</p>
+                                <p id="totalPayment" class="merchandise-subtotal1">${totalPayment} VNĐ</p>
                             </div>
                         </div>
                     </div>
+
                     <script>
                         function redirectToPaymentPage() {
                             var visaChecked = document.getElementById("visa").checked;
@@ -214,11 +202,11 @@
                             var cashChecked = document.getElementById("cash").checked;
 
                             if (visaChecked) {
-                                window.location.href = "vnpay.html";
+                                window.location.href = "/pay?totalPayment=${giatien}";
                             } else if (atmChecked) {
-                                window.location.href = "vnpay.html";
+                                window.location.href = "/pay?totalPayment=${giatien}";
                             } else if (cashChecked) {
-                                window.location.href = "success.jsp";
+                                window.location.href = "/alotra/success";
                             }
                         }
                     </script>
@@ -250,13 +238,97 @@
         </div>
     </div>
 </div>
+<script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+<script>
+    function updateMerchandiseSubtotal() {
+        var merchandiseSubtotal = 0;
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
-<%--<script src="/resources/static/js/components/header/header.js"></script>--%>
+        // Get all elements with the class 'item-checkbox'
+        var checkboxes = document.getElementsByClassName('item-checkbox');
+
+        // Loop through each checkbox
+        for (var i = 0; i < checkboxes.length; i++) {
+            // Check if the checkbox is checked
+            if (checkboxes[i].checked) {
+                // Get the corresponding item's total_cost attribute
+                var totalCost = parseFloat(checkboxes[i].getAttribute('data-total-cost'));
+
+                // Check if totalCost is a valid number
+                if (!isNaN(totalCost)) {
+                    // Add the total_cost to the merchandiseSubtotal
+                    merchandiseSubtotal += totalCost;
+                }
+            }
+        }
+
+        // Update the HTML element with the new merchandiseSubtotal value
+        document.getElementById('merchandiseSubtotal').innerText = merchandiseSubtotal + ' VNĐ';
+    }
+
+    // Call the updateMerchandiseSubtotal function when the page loads
+    window.onload = updateMerchandiseSubtotal;
+
+    // Add an event listener to each checkbox
+    var checkboxes = document.getElementsByClassName('item-checkbox');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].addEventListener('click', updateMerchandiseSubtotal);
+    }
+</script>
+<script>
+    // Function to update totalPayment
+    function updateTotalPayment() {
+        // Call the existing function to update merchandiseSubtotal
+        updateMerchandiseSubtotal();
+
+        // Get the updated merchandiseSubtotal value
+        var merchandiseSubtotal = parseFloat(document.getElementById('merchandiseSubtotal').innerText);
+
+        // Check if merchandiseSubtotal is a valid number
+        if (!isNaN(merchandiseSubtotal)) {
+            // Calculate totalPayment by adding a fixed value (30000)
+            var totalPayment = merchandiseSubtotal + 30000;
+
+            // Update the HTML element with the new totalPayment value
+            document.getElementById('totalPayment').innerText = totalPayment + ' VNĐ';
+        } else {
+            // Handle the case where merchandiseSubtotal is not a valid number
+            console.error('Invalid merchandiseSubtotal value');
+        }
+    }
+
+    // Call the updateTotalPayment function when the page loads
+    window.onload = updateTotalPayment;
+
+    // Add an event listener to each checkbox
+    var checkboxes = document.getElementsByClassName('item-checkbox');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].addEventListener('click', updateTotalPayment);
+    }
+
+</script>
+<script>
+    function deleteBillinfo(button) {
+        console.log("Deleting Billinfo");
+        let billinfoId = $(button).data("billinfo-id");
+
+        $.ajax({
+            type: "POST",
+            url: "/inexorability",
+            data: { id_bill_info: billinfoId },
+        });
+        setTimeout(function() {
+            window.location.href = "/alotra/checkout";
+        }, 100);
+
+    }
+
+
+</script>
 </body>
 </html>

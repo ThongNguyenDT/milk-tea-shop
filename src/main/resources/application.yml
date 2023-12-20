@@ -6,9 +6,10 @@ spring:
   #      prefix: /WEB-INF/view/, /templates/
 
   datasource:
-    url: jdbc:mysql://localhost:3333/hypernate
-    username: user
-    password: password
+#    url: jdbc:mysql://localhost:3333/hypernate
+    url: jdbc:mysql://localhost:3307/hypernate
+    username: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:

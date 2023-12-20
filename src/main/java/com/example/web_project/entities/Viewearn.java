@@ -1,6 +1,10 @@
 package com.example.web_project.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.Immutable;
 
@@ -14,10 +18,10 @@ import org.hibernate.annotations.Immutable;
 @Setter
 @Entity(name = "Viewearn")
 @Immutable
-@Table(name = "viewearn", schema = "WebProject")
+@Table(name = "viewearn", schema = "test")
 public class Viewearn {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     @Column(name = "idBillInfo", nullable = false)
     private Integer idBillInfo;
 
